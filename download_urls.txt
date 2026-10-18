@@ -1,0 +1,4 @@
+# ScanToBIM Tools - download URL settings
+# To change the Free download link, replace the URL after the equals sign.
+# Keep this file in the same folder as index.html.
+FREE_DOWNLOAD_URL=https://example.com/your-free-download.zip

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scan for MEP - pyRevit Tool</title>
+  <meta name="description" content="Scan for MEP - bộ công cụ pyRevit tự động dựng Pipe, Duct, Cable Tray từ dữ liệu Point Cloud.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold text-slate-900 flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left text-sm text-cyan-600"></i> Trang chủ / <span class="text-cyan-600">Scan for MEP</span>
+      </a>
+      <a href="contact.html" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Liên hệ</a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-12">
+    <span class="text-cyan-600 font-bold text-sm tracking-widest uppercase">MEP Module</span>
+    <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-6">Scan for MEP pyRevit Tools</h1>
+    <p class="text-slate-600 text-lg mb-8">
+      Bộ công cụ hỗ trợ dựng mô hình cơ điện (Ống nước, Ống gió, Thang máng điện) tự động dựa trên mây điểm Point Cloud trong Revit.
+    </p>
+
+    <!-- DEMO VIDEO -->
+    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden mb-12 shadow-sm">
+      <video class="w-full aspect-video bg-slate-900" controls preload="none" poster="video/thumb_mep.jpg">
+        <source src="video/video_mep.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- PRICING (merged from pricing_MEP.html) -->
+    <section id="pricing" class="mb-14">
+      <div class="text-center mb-8">
+        <span class="text-cyan-600 font-bold text-sm tracking-widest uppercase">Bảng giá</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">Bảng Giá Tool</h2>
+        <p class="text-slate-600 mt-2">Gói theo năm – cập nhật miễn phí trong thời gian sử dụng</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- FREE -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col shadow-sm">
+          <div class="text-center mb-6">
+            <span class="inline-block bg-slate-100 text-slate-600 text-sm font-semibold px-4 py-1 rounded-full">Free</span>
+            <div class="mt-4 text-3xl font-bold text-slate-900">-</div>
+            <p class="text-slate-500 text-sm mt-1">Miễn phí</p>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-700 flex-grow">
+            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 50+ button</li>
+            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> 10+ button scan</li>
+            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Family Manager</li>
+            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Check Clash</li>
+            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Workset Owner</li>
+          </ul>
+          <a id="free-download-btn" href="#" class="mt-6 block text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold py-2.5 rounded-lg transition">Download ↓</a>
+        </div>
+
+        <!-- PRO -->
+        <div class="bg-white border-2 border-cyan-400 rounded-2xl p-6 flex flex-col shadow-md relative">
+          <div class="text-center mb-6">
+            <span class="inline-block bg-cyan-50 text-cyan-700 text-sm font-semibold px-4 py-1 rounded-full">Pro</span>
+            <div class="mt-4 text-3xl font-bold text-slate-900">1.490.000<span class="text-base font-normal text-slate-500">đ/năm</span></div>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-700 flex-grow">
+            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 50+ button</li>
+            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 10+ button scan</li>
+            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Family Manager</li>
+            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Check Clash</li>
+            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Workset Owner</li>
+          </ul>
+          <a href="contact.html" class="mt-6 block text-center bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2.5 rounded-lg transition">Liên hệ →</a>
+        </div>
+
+        <!-- ULTRA -->
+        <div class="bg-white border-2 border-blue-500 rounded-2xl p-6 flex flex-col shadow-md relative">
+          <span class="absolute -top-3 right-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">BEST VALUE</span>
+          <div class="text-center mb-6">
+            <span class="inline-block bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-1 rounded-full">Ultra</span>
+            <div class="mt-4 text-3xl font-bold text-blue-600">2.290.000<span class="text-base font-normal text-slate-500">đ/năm</span></div>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-700 flex-grow">
+            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 50+ button</li>
+            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 10+ button scan</li>
+            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Family Manager</li>
+            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Check Clash</li>
+            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Workset Owner</li>
+          </ul>
+          <a href="contact.html" class="mt-6 block text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-lg transition shadow-lg shadow-blue-500/20">Liên hệ →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TOOLBAR OVERVIEW -->
+    <h2 class="text-2xl font-bold text-slate-900 mb-6">Bộ Tool trên Ribbon</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+      
+      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-network-wired"></i> MEP Modeling
+        </h3>
+        <ul class="text-sm text-slate-700 space-y-1.5">
+          <li>• Extend Connect</li>
+          <li>• Connect/Dis MEP (Multi)</li>
+          <li>• Draw MEP</li>
+          <li>• Snap MEP (Multi)</li>
+          <li>• Scan to MEP (Multi)</li>
+          <li>• Auto Route</li>
+        </ul>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-cubes"></i> Family &amp; InPlace
+        </h3>
+        <ul class="text-sm text-slate-700 space-y-1.5">
+          <li>• Bolt Tool</li>
+          <li>• Place Box</li>
+          <li>• Circular Array</li>
+          <li>• Save Element</li>
+          <li>• Convert InPlace To Family</li>
+          <li>• MEP Switch</li>
+          <li>• Show In-Place</li>
+        </ul>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-wrench"></i> General Utilities
+        </h3>
+        <ul class="text-sm text-slate-700 space-y-1.5">
+          <li>• Center Tool</li>
+          <li>• Align Box</li>
+          <li>• Move To Point</li>
+          <li>• Export View Templates</li>
+          <li>• Set ViewRange</li>
+          <li>• Line to Struc</li>
+        </ul>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-triangle-exclamation"></i> Clash &amp; Graphic
+        </h3>
+        <ul class="text-sm text-slate-700 space-y-1.5">
+          <li>• Check Clash</li>
+          <li>• Clash Wall</li>
+          <li>• Workset Owner</li>
+          <li>• Reset Color</li>
+          <li>• Show Edges</li>
+          <li>• 3 Section</li>
+        </ul>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-eye"></i> View
+        </h3>
+        <ul class="text-sm text-slate-700 space-y-1.5">
+          <li>• Save/Load UserView</li>
+          <li>• Manage View Layout</li>
+          <li>• Delete View Section</li>
+          <li>• Switch Normal - RGB (All)</li>
+          <li>• Orient To View</li>
+          <li>• TurnOff PointCloud</li>
+        </ul>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-circle-info"></i> About
+        </h3>
+        <ul class="text-sm text-slate-700 space-y-1.5">
+          <li>• Setting</li>
+          <li>• Hướng Dẫn</li>
+          <li>• About</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <h2 class="text-2xl font-bold text-slate-900 mb-6">Tính năng chính</h2>
+    <div class="space-y-4 mb-12">
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <h3 class="font-semibold text-cyan-700">1. Scan to MEP (Multi) &amp; Auto Route</h3>
+        <p class="text-slate-600 text-sm mt-1">Chọn vùng Point Cloud, tool tự động nhận diện và tạo Pipe / Duct / Cable Tray với kích thước và độ dốc phù hợp. Hỗ trợ multi-select.</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <h3 class="font-semibold text-cyan-700">2. Connect / Dis MEP &amp; Extend Connect</h3>
+        <p class="text-slate-600 text-sm mt-1">Tự động nối các đoạn ống, chèn Fitting / Elbow phù hợp hoặc ngắt kết nối nhanh.</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <h3 class="font-semibold text-cyan-700">3. Family Manager &amp; Convert InPlace</h3>
+        <p class="text-slate-600 text-sm mt-1">Quản lý Family, chuyển In-Place sang Family, Place Box, Circular Array, Bolt Tool.</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <h3 class="font-semibold text-cyan-700">4. Check Clash &amp; Workset Owner</h3>
+        <p class="text-slate-600 text-sm mt-1">Kiểm tra va chạm giữa MEP và Point Cloud / Wall. Quản lý Workset Owner nhanh chóng (gói Ultra).</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+        <h3 class="font-semibold text-cyan-700">5. View Utilities</h3>
+        <p class="text-slate-600 text-sm mt-1">Save/Load User View, quản lý View Layout, Switch Normal-RGB, Orient To View, Turn Off PointCloud.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+      © 2026 ScanToBIM pyRevit Extension
+    </div>
+  </footer>
+
+  <script>
+    (async function () {
+      const button = document.getElementById('free-download-btn');
+      if (!button) return;
+      try {
+        const response = await fetch('download_urls.txt', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Could not load download_urls.txt');
+        const content = await response.text();
+        const line = content.split(/\r?\n/).find(row => row.trim().startsWith('FREE_DOWNLOAD_URL='));
+        const url = line ? line.substring(line.indexOf('=') + 1).trim() : '';
+        if (url && /^https?:\/\//i.test(url) && !url.includes('example.com/your-free-download.zip')) {
+          button.href = url;
+          button.target = '_blank';
+          button.rel = 'noopener noreferrer';
+        } else {
+          button.href = '#';
+          button.addEventListener('click', function (event) {
+            event.preventDefault();
+            alert('Hãy cập nhật FREE_DOWNLOAD_URL trong file download_urls.txt trước khi sử dụng nút Download.');
+          });
+        }
+      } catch (error) {
+        button.href = '#';
+        button.addEventListener('click', function (event) {
+          event.preventDefault();
+          alert('Không đọc được download_urls.txt. Hãy đảm bảo file này nằm trong thư mục gốc, cùng cấp với index.html.');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

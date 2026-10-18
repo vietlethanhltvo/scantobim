@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scan to BIM pyRevit Tools</title>
+  <meta name="description" content="Bộ công cụ pyRevit tự động hóa quy trình Scan to BIM: chuyển Point Cloud thành mô hình MEP và Kết cấu nhanh, chính xác.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <div class="bg-blue-600 p-2 rounded-lg">
+            <i class="fa-solid fa-cube text-xl text-white"></i>
+          </div>
+          <a href="index.html" class="text-xl font-bold tracking-tight text-slate-900">ScanToBIM <span class="text-blue-600">Tools</span></a>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-sm font-medium">
+          <a href="#products" class="text-slate-600 hover:text-blue-600 transition">Products</a>
+          <a href="#products" class="text-slate-600 hover:text-blue-600 transition">Pricing</a>
+          <a href="#docs" class="text-slate-600 hover:text-blue-600 transition">Docs & Guide</a>
+          <a href="contact.html" class="text-slate-600 hover:text-blue-600 transition">Contact</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="#products" class="hidden sm:inline-block bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg shadow-blue-500/20 transition">Get Tools</a>
+          <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-slate-900 w-10 h-10 flex items-center justify-center" aria-label="Mở menu" aria-expanded="false">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+      <nav id="mobile-menu" class="hidden md:hidden flex flex-col gap-1 pb-4 text-sm font-medium">
+        <a href="#products" class="text-slate-600 hover:text-blue-600 transition py-2">Products</a>
+        <a href="#products" class="text-slate-600 hover:text-blue-600 transition py-2">Pricing</a>
+        <a href="#docs" class="text-slate-600 hover:text-blue-600 transition py-2">Docs & Guide</a>
+        <a href="contact.html" class="text-slate-600 hover:text-blue-600 transition py-2">Contact</a>
+        <a href="#products" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold mt-1 text-center">Get Tools</a>
+      </nav>
+    </div>
+  </header>
+
+  <script>
+    (function () {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function () {
+        const isOpen = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        btn.querySelector('i').className = isOpen ? 'fa-solid fa-bars text-lg' : 'fa-solid fa-xmark text-lg';
+      });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.querySelector('i').className = 'fa-solid fa-bars text-lg';
+      }));
+    })();
+  </script>
+
+  <!-- HERO SECTION -->
+  <section class="pt-10 pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
+        <!-- Left: content -->
+        <div class="text-center lg:text-left">
+          <span class="bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200">pyRevit Extension for Revit</span>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mt-5 text-slate-900 leading-tight tracking-tight">
+            Automate Scan to BIM Workflows in Revit
+          </h1>
+          <ul class="mt-6 max-w-xl mx-auto lg:mx-0 text-left space-y-2.5 text-slate-700 text-base md:text-lg">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-check text-green-500 mt-1 shrink-0"></i>
+              <span>Tự động chuyển Point Cloud thành mô hình Pipe, Duct, Cable Tray hoặc Cột, Dầm, Sàn, Tường trong Revit.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-check text-green-500 mt-1 shrink-0"></i>
+              <span>Thiết kế trong 1 dock dễ dàng thao tác, không chiếm quá nhiều diện tích, có thể tuỳ chỉnh</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-check text-green-500 mt-1 shrink-0"></i>
+              <span>Tương thích với Revit 2021 – 2026 (pyRevit)</span>
+            </li>
+          </ul>
+          <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
+            <a href="#products" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium shadow-lg shadow-blue-500/25 transition">Khám phá Tools</a>
+            <a href="#products" class="bg-white hover:bg-slate-100 text-slate-700 px-6 py-3 rounded-lg font-medium border border-slate-300 transition">Buy Now</a>
+          </div>
+        </div>
+
+        <!-- Right: image carousel — aligned with checklist (✓) -->
+        <div class="relative w-full max-w-xl mx-auto lg:max-w-none lg:mt-[4.75rem]">
+          <div class="relative overflow-hidden rounded-2xl border border-slate-200 shadow-xl bg-slate-100 aspect-[16/10]">
+            <div id="hero-carousel" class="relative w-full h-full">
+              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" src="image/home1.png" alt="Toàn cảnh dock / ribbon tool" data-index="0">
+              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="image/home2.png" alt="Scan → tạo Pipe/Duct" data-index="1">
+              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="image/home3.png" alt="Scan → tạo Beam/Column" data-index="2">
+              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="image/home4.png" alt="Kết quả mô hình so với Point Cloud" data-index="3">
+            </div>
+            <!-- Prev / Next -->
+            <button type="button" id="hero-prev" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-md flex items-center justify-center text-slate-700 transition z-10" aria-label="Ảnh trước">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button type="button" id="hero-next" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-md flex items-center justify-center text-slate-700 transition z-10" aria-label="Ảnh sau">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <!-- Dots -->
+            <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-10" id="hero-dots">
+              <button type="button" class="hero-dot w-2.5 h-2.5 rounded-full bg-white shadow ring-2 ring-blue-600" data-index="0" aria-label="Slide 1"></button>
+              <button type="button" class="hero-dot w-2.5 h-2.5 rounded-full bg-white/70 shadow" data-index="1" aria-label="Slide 2"></button>
+              <button type="button" class="hero-dot w-2.5 h-2.5 rounded-full bg-white/70 shadow" data-index="2" aria-label="Slide 3"></button>
+              <button type="button" class="hero-dot w-2.5 h-2.5 rounded-full bg-white/70 shadow" data-index="3" aria-label="Slide 4"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const slides = document.querySelectorAll('#hero-carousel .hero-slide');
+      const dots = document.querySelectorAll('#hero-dots .hero-dot');
+      const prevBtn = document.getElementById('hero-prev');
+      const nextBtn = document.getElementById('hero-next');
+      if (!slides.length) return;
+      let current = 0;
+      const total = slides.length;
+
+      function show(index) {
+        current = (index + total) % total;
+        slides.forEach((s, i) => {
+          s.classList.toggle('opacity-100', i === current);
+          s.classList.toggle('opacity-0', i !== current);
+        });
+        dots.forEach((d, i) => {
+          d.classList.toggle('ring-2', i === current);
+          d.classList.toggle('ring-blue-600', i === current);
+          d.classList.toggle('bg-white', i === current);
+          d.classList.toggle('bg-white/70', i !== current);
+        });
+      }
+
+      prevBtn && prevBtn.addEventListener('click', () => show(current - 1));
+      nextBtn && nextBtn.addEventListener('click', () => show(current + 1));
+      dots.forEach(d => d.addEventListener('click', () => show(parseInt(d.dataset.index, 10))));
+
+      // Auto-play optional (every 5s)
+      let timer = setInterval(() => show(current + 1), 5000);
+      const carousel = document.getElementById('hero-carousel');
+      if (carousel) {
+        carousel.addEventListener('mouseenter', () => clearInterval(timer));
+        carousel.addEventListener('mouseleave', () => { timer = setInterval(() => show(current + 1), 5000); });
+      }
+    })();
+  </script>
+
+  <!-- POINT CLOUD TO BIM COMPARISON SLIDER -->
+  <section id="pointcloud-comparison" class="pb-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700">POINT CLOUD → BIM</span>
+        <h2 class="mt-4 text-3xl md:text-4xl font-bold text-slate-900">From Scan to Model</h2>
+        <p class="mt-4 max-w-2xl mx-auto text-slate-600 text-base md:text-lg">Kéo thanh ở giữa để so sánh dữ liệu Point Cloud với mô hình Revit hoàn thiện.</p>
+      </div>
+
+      <div class="comparison-slider" id="comparison-slider" style="--split: 50%;" role="region" aria-label="So sánh Point Cloud và BIM Model">
+        <!-- AFTER / RIGHT IMAGE -->
+        <div class="comparison-layer comparison-after">
+          <img class="comparison-image" src="image/after.png" alt="BIM Model - mô hình Revit hoàn thiện">
+        </div>
+
+        <!-- BEFORE / LEFT IMAGE -->
+        <div class="comparison-layer comparison-before">
+          <img class="comparison-image" src="image/before.png" alt="Point Cloud - dữ liệu quét laser">
+        </div>
+
+        <div class="comparison-divider" aria-hidden="true">
+          <span class="comparison-handle"><i class="fa-solid fa-arrows-left-right"></i></span>
+        </div>
+        <input id="comparison-range" class="comparison-range" type="range" min="0" max="100" value="50" aria-label="Kéo để so sánh Point Cloud và BIM Model">
+        <span class="comparison-label comparison-label-before">POINT CLOUD</span>
+        <span class="comparison-label comparison-label-after">BIM MODEL</span>
+      </div>
+      <div class="mt-4 flex items-center justify-between gap-4 text-xs text-slate-500">
+        <span><i class="fa-solid fa-arrow-left mr-1"></i> Point Cloud</span>
+        <span>Kéo thanh trượt để xem</span>
+        <span>BIM Model <i class="fa-solid fa-arrow-right ml-1"></i></span>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .comparison-slider {
+      --split: 50%;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      background: #f1f5f9;
+      box-shadow: 0 20px 55px rgba(15, 23, 42, .08);
+      touch-action: pan-y;
+    }
+    .comparison-layer { position: absolute; inset: 0; overflow: hidden; }
+    .comparison-after { z-index: 1; }
+    .comparison-before { z-index: 2; clip-path: inset(0 calc(100% - var(--split)) 0 0); }
+    .comparison-image { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .comparison-divider { position: absolute; z-index: 4; top: 0; bottom: 0; left: var(--split); width: 2px; transform: translateX(-50%); background: #fff; pointer-events: none; box-shadow: 0 0 12px rgba(0,0,0,.25); }
+    .comparison-handle { position: absolute; top: 50%; left: 50%; display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; transform: translate(-50%,-50%); border: 2px solid white; border-radius: 9999px; background: #0284c7; color: white; box-shadow: 0 3px 14px rgba(0,0,0,.25); }
+    .comparison-range { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    .comparison-range:focus-visible { opacity: .08; outline: 3px solid #38bdf8; outline-offset: -4px; }
+    .comparison-label { position: absolute; z-index: 3; top: 1rem; padding: .45rem .7rem; border: 1px solid rgba(148,163,184,.4); border-radius: .5rem; background: rgba(255,255,255,.9); color: #0f172a; font-size: .7rem; font-weight: 700; letter-spacing: .08em; backdrop-filter: blur(8px); pointer-events: none; }
+    .comparison-label-before { left: 1rem; }
+    .comparison-label-after { right: 1rem; }
+    @media (max-width: 640px) {
+      .comparison-slider { aspect-ratio: 4 / 3; border-radius: .75rem; }
+      .comparison-label { top: .6rem; padding: .35rem .45rem; font-size: .58rem; }
+      .comparison-label-before { left: .6rem; }
+      .comparison-label-after { right: .6rem; }
+      .comparison-handle { width: 38px; height: 38px; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      const slider = document.getElementById('comparison-slider');
+      const range = document.getElementById('comparison-range');
+      if (!slider || !range) return;
+      const updateSlider = function () {
+        slider.style.setProperty('--split', range.value + '%');
+      };
+      let animating = false;
+      let rafId = null;
+      range.addEventListener('input', function () {
+        if (animating) {
+          animating = false;
+          if (rafId) cancelAnimationFrame(rafId);
+        }
+        updateSlider();
+      });
+      // Auto demo once on load: 15% → 85%, then stop
+      range.value = 15;
+      updateSlider();
+      animating = true;
+      const from = 15, to = 85, duration = 2000;
+      let start = null;
+      function easeInOut(t) {
+        return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      }
+      function tick(ts) {
+        if (!animating) return;
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / duration, 1);
+        const val = from + (to - from) * easeInOut(p);
+        range.value = val;
+        updateSlider();
+        if (p < 1) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          animating = false;
+        }
+      }
+      // slight delay so images are ready
+      setTimeout(function () {
+        rafId = requestAnimationFrame(tick);
+      }, 400);
+    })();
+  </script>
+
+  <!-- PRODUCTS SECTION (also Pricing target) -->
+  <section id="products" class="py-16 bg-white border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Bộ Công Cụ Theo Chuyên Ngành</h2>
+        <p class="text-slate-600 mt-4 text-base md:text-lg max-w-2xl mx-auto">Hai bộ công cụ pyRevit được xây dựng riêng cho từng chuyên ngành — chọn đúng bộ việc bạn cần</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- CARD 1: SCAN FOR MEP -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-cyan-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 text-2xl mb-6">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">Scan for MEP</h3>
+            <p class="text-slate-600 text-base mb-5 leading-relaxed">
+              Chuyển đổi Point Cloud thành mô hình MEP thực tế: tự động tạo Pipe, Duct, Cable Tray khớp đúng vị trí, kích thước và độ dốc từ dữ liệu quét laser.
+            </p>
+            <ul class="space-y-3 text-base text-slate-700 mb-8">
+              <li class="flex items-center"><i class="fa-solid fa-check text-cyan-600 mr-2.5 shrink-0"></i> Auto-fit Pipe/Duct size từ Point Cloud</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-cyan-600 mr-2.5 shrink-0"></i> Tự động kết nối Fitting & Elbow</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-cyan-600 mr-2.5 shrink-0"></i> Kiểm tra va chạm Point Cloud & MEP</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-cyan-600 mr-2.5 shrink-0"></i> 50+ button tools + Scan tools</li>
+            </ul>
+          </div>
+          <a href="mep.html" class="w-full text-center bg-white hover:bg-cyan-600 hover:text-white text-cyan-700 py-3 rounded-xl font-semibold border border-cyan-300 transition">
+            Xem chi tiết &amp; Bảng giá <i class="fa-solid fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+
+        <!-- CARD 2: SCAN FOR STRUCTURAL -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-2xl mb-6">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4">Scan for Structural</h3>
+            <p class="text-slate-600 text-base mb-5 leading-relaxed">
+              Chuyển đổi Point Cloud thành mô hình Kết cấu: tự động trích xuất và dựng Cột, Dầm, Sàn, Tường khớp theo hình dạng thực tế từ dữ liệu quét laser.
+            </p>
+            <ul class="space-y-3 text-base text-slate-700 mb-8">
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5 shrink-0"></i> Tự động nhận diện Cột &amp; Dầm thép / Bê tông</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5 shrink-0"></i> Tạo Sàn &amp; Tường từ bề mặt Scan</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-blue-600 mr-2.5 shrink-0"></i> Đánh giá độ nghiêng &amp; biến dạng kết cấu</li>
+            </ul>
+          </div>
+          <a href="structural.html" class="w-full text-center bg-white hover:bg-blue-600 hover:text-white text-blue-700 py-3 rounded-xl font-semibold border border-blue-300 transition">
+            Xem chi tiết &amp; Bảng giá <i class="fa-solid fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO VIDEOS SECTION -->
+  <section id="demo-videos" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+        <i class="fa-solid fa-play mr-1.5"></i> XEM TOOL HOẠT ĐỘNG
+      </span>
+      <h2 class="mt-4 text-3xl md:text-4xl font-bold text-slate-900">Demo quy trình Scan to BIM</h2>
+      <p class="text-slate-600 mt-4 text-base md:text-lg max-w-2xl mx-auto">
+        Xem cách bộ công cụ pyRevit chuyển Point Cloud thành mô hình MEP và Kết cấu trong Revit.
+      </p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+        <video class="w-full aspect-video bg-slate-900 demo-video" controls preload="none" poster="video/thumb1.jpg">
+          <source src="video/video 1.mp4" type="video/mp4">
+        </video>
+        <p class="text-base text-slate-700 px-4 py-3.5 font-medium">Demo Scan to MEP — quy trình dựng ống</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+        <video class="w-full aspect-video bg-slate-900 demo-video" controls preload="none" poster="video/thumb2.jpg">
+          <source src="video/video 2.mp4" type="video/mp4">
+        </video>
+        <p class="text-base text-slate-700 px-4 py-3.5 font-medium">Demo kết nối Fitting &amp; Auto Route</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+        <video class="w-full aspect-video bg-slate-900 demo-video" controls preload="none" poster="video/thumb3.jpg">
+          <source src="video/video 3.mp4" type="video/mp4">
+        </video>
+        <p class="text-base text-slate-700 px-4 py-3.5 font-medium">Demo Scan to Structural — Cột &amp; Dầm</p>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+        <video class="w-full aspect-video bg-slate-900 demo-video" controls preload="none" poster="video/thumb4.jpg">
+          <source src="video/video 4.mp4" type="video/mp4">
+        </video>
+        <p class="text-base text-slate-700 px-4 py-3.5 font-medium">Demo Wall &amp; Floor từ Point Cloud</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const videos = document.querySelectorAll('.demo-video');
+      videos.forEach(function (video) {
+        video.addEventListener('play', function () {
+          videos.forEach(function (other) {
+            if (other !== video && !other.paused) {
+              other.pause();
+            }
+          });
+        });
+      });
+    })();
+  </script>
+
+  <!-- DOCS SECTION -->
+  <section id="docs" class="py-16 bg-slate-100 border-y border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Docs & Guide</h2>
+      <p class="text-slate-600 mt-4 mb-10 text-base md:text-lg">Hướng dẫn cài đặt và sử dụng tool pyRevit</p>
+      <div class="bg-white border border-slate-200 rounded-2xl p-8 text-left shadow-sm hover:shadow-md transition-shadow duration-300">
+        <ol class="space-y-5 text-slate-700 text-base">
+          <li class="flex gap-3">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</span>
+            <span>Cài đặt pyRevit (nếu chưa có) từ <a href="https://pyrevitlabs.github.io/" target="_blank" class="text-blue-600 hover:underline">pyrevitlabs.github.io</a></span>
+          </li>
+          <li class="flex gap-3">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</span>
+            <span>Tải bộ tool tương ứng gói của bạn và giải nén vào thư mục Extensions của pyRevit</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</span>
+            <span>Reload pyRevit hoặc restart Revit để thấy tab tool mới</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="bg-blue-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold shrink-0">4</span>
+            <span>Xem video hướng dẫn chi tiết trong từng trang Product</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+        <!-- Brand + version -->
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="bg-blue-600 p-1.5 rounded-lg">
+              <i class="fa-solid fa-cube text-sm text-white"></i>
+            </div>
+            <span class="font-bold text-slate-900">ScanToBIM Tools</span>
+          </div>
+          <p class="text-sm text-slate-500 leading-relaxed">pyRevit extension for Scan to BIM workflows in Autodesk Revit.</p>
+          <div class="mt-4 space-y-1.5 text-sm text-slate-600">
+            <p><span class="font-medium text-slate-800">Version:</span> 1.0</p>
+            <p><span class="font-medium text-slate-800">Support:</span> Revit 2021–2026</p>
+            <p><span class="font-medium text-slate-800">License:</span> Commercial</p>
+          </div>
+        </div>
+        <!-- Contact -->
+        <div>
+          <p class="text-sm font-semibold text-slate-900 mb-3">Contact</p>
+          <div class="space-y-2.5 text-sm text-slate-600">
+            <a href="mailto:lethanvietltvo@gmail.com" class="flex items-center gap-2 hover:text-blue-600 transition">
+              <i class="fa-solid fa-envelope text-blue-600 w-4"></i>lethanvietltvo@gmail.com
+            </a>
+            <a href="https://zalo.me/0857263521" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-blue-600 transition">
+              <i class="fa-solid fa-phone text-blue-600 w-4"></i>Zalo: 0857263521
+            </a>
+            <a href="contact.html" class="flex items-center gap-2 hover:text-blue-600 transition">
+              <i class="fa-solid fa-message text-blue-600 w-4"></i>Contact form
+            </a>
+          </div>
+        </div>
+        <!-- Links -->
+        <div>
+          <p class="text-sm font-semibold text-slate-900 mb-3">Links</p>
+          <div class="space-y-2.5 text-sm text-slate-600">
+            <a href="#products" class="block hover:text-blue-600 transition">Products &amp; Pricing</a>
+            <a href="#docs" class="block hover:text-blue-600 transition">Docs &amp; Guide</a>
+            <a href="#demo-videos" class="block hover:text-blue-600 transition">Demo videos</a>
+          </div>
+        </div>
+        <!-- Social / trust -->
+        <div>
+          <p class="text-sm font-semibold text-slate-900 mb-3">Follow</p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://github.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-700 hover:border-slate-400 hover:bg-white transition" title="GitHub">
+              <i class="fa-brands fa-github text-lg"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-700 hover:border-slate-400 hover:bg-white transition" title="LinkedIn">
+              <i class="fa-brands fa-linkedin text-lg text-blue-700"></i> LinkedIn
+            </a>
+          </div>
+          <p class="text-xs text-slate-400 mt-4">Cập nhật link GitHub / LinkedIn khi có repo &amp; profile chính thức.</p>
+        </div>
+      </div>
+      <p class="text-slate-400 text-xs mt-10 pt-6 border-t border-slate-100 text-center">© 2026 ScanToBIM pyRevit Extension. Built with GitHub Pages.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
