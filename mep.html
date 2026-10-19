@@ -8,20 +8,51 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="theme-color" content="#2563eb">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ScanToBIM Tools — pyRevit cho Scan to BIM">
+  <meta property="og:description" content="Chuyển Point Cloud thành mô hình MEP và Kết cấu trong Revit nhanh, chính xác.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/config.js" defer></script>
+  <script src="assets/site.js" defer></script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans">
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="index.html" class="text-xl font-bold text-slate-900 flex items-center gap-2">
-        <i class="fa-solid fa-arrow-left text-sm text-cyan-600"></i> Trang chủ / <span class="text-cyan-600">Scan for MEP</span>
-      </a>
-      <a href="contact.html" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Liên hệ</a>
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2.5 text-lg font-bold tracking-tight text-slate-900">
+          <span class="bg-blue-600 w-9 h-9 rounded-lg flex items-center justify-center"><i class="fa-solid fa-cube text-white"></i></span>
+          <span>ScanToBIM <span class="text-blue-600">Tools</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600" aria-label="Điều hướng chính">
+          <a class="nav-link hover:text-blue-600 transition" href="mep.html">Scan for MEP</a>
+          <a class="nav-link hover:text-blue-600 transition" href="structural.html">Scan for Structural</a>
+          <a class="nav-link hover:text-blue-600 transition" href="index.html#demo-videos">Demo</a>
+          <a class="nav-link hover:text-blue-600 transition" href="index.html#docs">Hướng dẫn</a>
+          <a class="nav-link hover:text-blue-600 transition" href="contact.html">Liên hệ</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="index.html#products" class="hidden sm:inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Xem bảng giá</a>
+          <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-slate-900 w-10 h-10 flex items-center justify-center" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-menu"><i class="fa-solid fa-bars text-lg"></i></button>
+        </div>
+      </div>
+      <nav id="mobile-menu" class="hidden md:hidden flex flex-col pb-4 text-sm font-medium text-slate-700" aria-label="Menu di động">
+        <a class="nav-link py-2.5" href="mep.html">Scan for MEP</a>
+        <a class="nav-link py-2.5" href="structural.html">Scan for Structural</a>
+        <a class="nav-link py-2.5" href="index.html#demo-videos">Demo</a>
+        <a class="nav-link py-2.5" href="index.html#docs">Hướng dẫn</a>
+        <a class="nav-link py-2.5" href="contact.html">Liên hệ</a>
+        <a href="index.html#products" class="bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold mt-2 text-center">Xem bảng giá</a>
+      </nav>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4 py-12">
+  <nav class="max-w-5xl mx-auto px-4 pt-6 text-sm text-slate-500" aria-label="Breadcrumb"><a href="index.html" class="hover:text-blue-600">Trang chủ</a> <span class="mx-1">/</span> <span class="text-slate-800 font-medium">Scan for MEP</span></nav>
+  <main class="max-w-5xl mx-auto px-4 py-8">
     <span class="text-cyan-600 font-bold text-sm tracking-widest uppercase">MEP Module</span>
     <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-6">Scan for MEP pyRevit Tools</h1>
     <p class="text-slate-600 text-lg mb-8">
@@ -35,217 +66,112 @@
       </video>
     </div>
 
-    <!-- PRICING (merged from pricing_MEP.html) -->
-    <section id="pricing" class="mb-14">
-      <div class="text-center mb-8">
-        <span class="text-cyan-600 font-bold text-sm tracking-widest uppercase">Bảng giá</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">Bảng Giá Tool</h2>
-        <p class="text-slate-600 mt-2">Gói theo năm – cập nhật miễn phí trong thời gian sử dụng</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-
-        <!-- FREE -->
-        <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col shadow-sm">
-          <div class="text-center mb-6">
-            <span class="inline-block bg-slate-100 text-slate-600 text-sm font-semibold px-4 py-1 rounded-full">Free</span>
-            <div class="mt-4 text-3xl font-bold text-slate-900">-</div>
-            <p class="text-slate-500 text-sm mt-1">Miễn phí</p>
-          </div>
-          <ul class="space-y-3 text-sm text-slate-700 flex-grow">
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 50+ button</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> 10+ button scan</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Family Manager</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Check Clash</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Workset Owner</li>
-          </ul>
-          <a id="free-download-btn" href="#" class="mt-6 block text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold py-2.5 rounded-lg transition">Download ↓</a>
+    <!-- TRIAL -->
+    <section id="trial" class="mb-8">
+      <div class="bg-gradient-to-r from-cyan-50 to-blue-50 border border-cyan-200 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+        <div class="flex-1">
+          <span class="inline-block bg-cyan-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">DÙNG THỬ 7 NGÀY</span>
+          <h2 class="text-xl md:text-2xl font-bold text-slate-900">Thử 2 tool Scan trước khi mua</h2>
+          <p class="text-slate-600 text-sm mt-2 leading-relaxed">Trong 7 ngày bạn dùng đầy đủ <b>Scan to MEP</b> và <b>Scan to MEP (Multi)</b> cùng toàn bộ tool gói Free. Không cần thanh toán, kết thúc trial bạn tự quyết định có nâng cấp lên Pro / Ultra hay không.</p>
         </div>
-
-        <!-- PRO -->
-        <div class="bg-white border-2 border-cyan-400 rounded-2xl p-6 flex flex-col shadow-md relative">
-          <div class="text-center mb-6">
-            <span class="inline-block bg-cyan-50 text-cyan-700 text-sm font-semibold px-4 py-1 rounded-full">Pro</span>
-            <div class="mt-4 text-3xl font-bold text-slate-900">1.490.000<span class="text-base font-normal text-slate-500">đ/năm</span></div>
-          </div>
-          <ul class="space-y-3 text-sm text-slate-700 flex-grow">
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 50+ button</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 10+ button scan</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Family Manager</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Check Clash</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Workset Owner</li>
-          </ul>
-          <a href="contact.html" class="mt-6 block text-center bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2.5 rounded-lg transition">Liên hệ →</a>
-        </div>
-
-        <!-- ULTRA -->
-        <div class="bg-white border-2 border-blue-500 rounded-2xl p-6 flex flex-col shadow-md relative">
-          <span class="absolute -top-3 right-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">BEST VALUE</span>
-          <div class="text-center mb-6">
-            <span class="inline-block bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-1 rounded-full">Ultra</span>
-            <div class="mt-4 text-3xl font-bold text-blue-600">2.290.000<span class="text-base font-normal text-slate-500">đ/năm</span></div>
-          </div>
-          <ul class="space-y-3 text-sm text-slate-700 flex-grow">
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 50+ button</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 10+ button scan</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Family Manager</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Check Clash</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Workset Owner</li>
-          </ul>
-          <a href="contact.html" class="mt-6 block text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-lg transition shadow-lg shadow-blue-500/20">Liên hệ →</a>
-        </div>
-
+        <a href="register.html?plan=trial&amp;product=mep" class="shrink-0 text-center bg-cyan-600 hover:bg-cyan-500 text-white font-semibold px-6 py-3 rounded-lg transition shadow-lg shadow-cyan-500/20">Đăng ký dùng thử →</a>
       </div>
     </section>
 
-    <!-- TOOLBAR OVERVIEW -->
-    <h2 class="text-2xl font-bold text-slate-900 mb-6">Bộ Tool trên Ribbon</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-      
-      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-network-wired"></i> MEP Modeling
-        </h3>
-        <ul class="text-sm text-slate-700 space-y-1.5">
-          <li>• Extend Connect</li>
-          <li>• Connect/Dis MEP (Multi)</li>
-          <li>• Draw MEP</li>
-          <li>• Snap MEP (Multi)</li>
-          <li>• Scan to MEP (Multi)</li>
-          <li>• Auto Route</li>
-        </ul>
+    <!-- PRICING -->
+    <section id="pricing" class="mb-14">
+      <div class="text-center mb-8"><span class="text-cyan-600 font-bold text-sm tracking-widest uppercase">Bảng giá</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">Bảng Giá Tool</h2>
+        <p class="text-slate-600 mt-2">Thanh toán theo năm, cập nhật miễn phí trong suốt thời gian sử dụng</p></div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white border-2 border-slate-200 rounded-2xl p-6 flex flex-col shadow-md relative">
+          <div class="text-center mb-6"><span class="inline-block bg-slate-100 text-slate-600 text-sm font-semibold px-4 py-1 rounded-full">Free</span>
+            <div class="mt-4 text-3xl font-bold text-slate-900">0<span class="text-base font-normal text-slate-500">đ</span></div><p class="text-slate-500 text-sm mt-1">29 button cơ bản</p></div>
+          <ul class="space-y-3 text-sm text-slate-700 flex-grow"><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span><b>29</b> button cơ bản: nối ống, snap, vẽ MEP, view, tiện ích</span></li><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Place Bolt, Place Hanger, Flex Smooth</span></li><li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Scan to MEP (Multi), Place Flange / Box</span></li><li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Family Manager, MEP Switch</span></li><li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Auto Route, Seed MEP</span></li><li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Check Clash, Workset Owner</span></li></ul><a id="free-download-btn" href="#" class="mt-6 block text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold py-2.5 rounded-lg transition">Nhận bản Free →</a></div>
+        <div class="bg-white border-2 border-cyan-400 rounded-2xl p-6 flex flex-col shadow-md relative">
+          <div class="text-center mb-6"><span class="inline-block bg-cyan-50 text-cyan-700 text-sm font-semibold px-4 py-1 rounded-full">Pro</span>
+            <div class="mt-4 text-3xl font-bold text-slate-900">1.490.000<span class="text-base font-normal text-slate-500">đ/năm</span></div><p class="text-slate-500 text-sm mt-1">46 button (Free + 17 tool Pro)</p></div>
+          <ul class="space-y-3 text-sm text-slate-700 flex-grow"><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Toàn bộ <b>29</b> button gói Free</span></li><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span><b>Scan to MEP</b> và <b>Scan to MEP (Multi)</b>, Place Flange, Place Box, Switch Color PC</span></li><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Connect / Snap MEP (Multi), 2 Perp Link, Snap Center Line</span></li><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Family Manager, MEP Switch, Bolt Tool, Convert InPlace → RFA, 3 Section</span></li><li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Auto Route, Seed MEP, Place Sprinkler</span></li><li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Check Clash, Workset Owner, Manage Project</span></li></ul><a href="register.html?plan=pro&amp;product=mep" class="mt-6 block text-center bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2.5 rounded-lg transition">Đăng ký gói Pro →</a></div>
+        <div class="bg-white border-2 border-blue-500 rounded-2xl p-6 flex flex-col shadow-md relative"><span class="absolute -top-3 right-6 pulse-ring bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">BEST VALUE</span>
+          <div class="text-center mb-6"><span class="inline-block bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-1 rounded-full">Ultra</span>
+            <div class="mt-4 text-3xl font-bold text-blue-600">2.290.000<span class="text-base font-normal text-slate-500">đ/năm</span></div><p class="text-slate-500 text-sm mt-1">Đầy đủ 57 button</p></div>
+          <ul class="space-y-3 text-sm text-slate-700 flex-grow"><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Toàn bộ <b>46</b> button gói Pro</span></li><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span><b>Auto Route</b> + <b>Seed MEP</b>: tự động dựng cả tuyến từ vài đoạn quét tay</span></li><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span><b>Place Sprinkler</b>: ống nhánh + đầu phun</span></li><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span><b>Check Clash</b>: MEP × Kết cấu, MEP × MEP, lọc Clash / Duplicate theo % thể tích</span></li><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span><b>Workset Owner</b>, <b>Manage Project / Element</b></span></li><li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Export / Import View Templates, Split ScopeBox</span></li></ul><a href="register.html?plan=ultra&amp;product=mep" class="mt-6 block text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-lg transition shadow-lg shadow-blue-500/20">Đăng ký gói Ultra →</a></div>
       </div>
+    </section>
 
-      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-cubes"></i> Family &amp; InPlace
-        </h3>
-        <ul class="text-sm text-slate-700 space-y-1.5">
-          <li>• Bolt Tool</li>
-          <li>• Place Box</li>
-          <li>• Circular Array</li>
-          <li>• Save Element</li>
-          <li>• Convert InPlace To Family</li>
-          <li>• MEP Switch</li>
-          <li>• Show In-Place</li>
+    <!-- COMPANY -->
+    <section id="company" class="mb-14">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+        <div class="flex items-center gap-3 mb-2"><span class="w-10 h-10 rounded-lg bg-slate-900 text-white flex items-center justify-center"><i class="fa-solid fa-building"></i></span><h2 class="text-xl md:text-2xl font-bold text-slate-900">Gói dành cho công ty</h2></div>
+        <p class="text-slate-600 text-sm mb-5">Mua từ 3 seat trở lên để được giảm giá theo số lượng. Giá dưới đây là giá mỗi seat, mỗi năm.</p>
+        <div class="overflow-x-auto"><table class="w-full text-sm text-left min-w-[480px]">
+          <thead><tr class="text-xs uppercase tracking-wide text-slate-500"><th class="pb-2 pr-4">Số lượng</th><th class="pb-2 pr-4">Ưu đãi</th><th class="pb-2 pr-4">Pro / seat / năm</th><th class="pb-2">Ultra / seat / năm</th></tr></thead>
+          <tbody><tr class="border-t border-slate-100"><td class="py-3 pr-4 font-medium text-slate-800">3 – 5 seat</td><td class="py-3 pr-4 text-slate-600">Giảm 10%</td><td class="py-3 pr-4 text-cyan-700 font-semibold">1.341.000đ</td><td class="py-3 text-blue-700 font-semibold">2.061.000đ</td></tr><tr class="border-t border-slate-100"><td class="py-3 pr-4 font-medium text-slate-800">6 – 10 seat</td><td class="py-3 pr-4 text-slate-600">Giảm 15%</td><td class="py-3 pr-4 text-cyan-700 font-semibold">1.266.500đ</td><td class="py-3 text-blue-700 font-semibold">1.946.500đ</td></tr><tr class="border-t border-slate-100"><td class="py-3 pr-4 font-medium text-slate-800">Trên 10 seat</td><td class="py-3 pr-4 text-slate-600">Báo giá riêng</td><td class="py-3 pr-4 text-cyan-700 font-semibold">Liên hệ</td><td class="py-3 text-blue-700 font-semibold">Liên hệ</td></tr></tbody></table></div>
+        <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-slate-700">
+          <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5"></i>Hỗ trợ cài đặt cho cả nhóm</li>
+          <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5"></i>Cập nhật miễn phí trong thời hạn gói</li>
+          <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5"></i>Có thể dùng thử trước khi mua</li>
+          <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5"></i>Tư vấn chọn gói theo vai trò từng người</li>
         </ul>
+        <a href="register.html?plan=quote&amp;product=mep" class="mt-6 inline-block bg-slate-900 hover:bg-slate-700 text-white font-semibold px-6 py-2.5 rounded-lg transition">Nhận báo giá công ty →</a>
       </div>
+    </section>
 
-      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-wrench"></i> General Utilities
-        </h3>
-        <ul class="text-sm text-slate-700 space-y-1.5">
-          <li>• Center Tool</li>
-          <li>• Align Box</li>
-          <li>• Move To Point</li>
-          <li>• Export View Templates</li>
-          <li>• Set ViewRange</li>
-          <li>• Line to Struc</li>
-        </ul>
-      </div>
-
-      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-triangle-exclamation"></i> Clash &amp; Graphic
-        </h3>
-        <ul class="text-sm text-slate-700 space-y-1.5">
-          <li>• Check Clash</li>
-          <li>• Clash Wall</li>
-          <li>• Workset Owner</li>
-          <li>• Reset Color</li>
-          <li>• Show Edges</li>
-          <li>• 3 Section</li>
-        </ul>
-      </div>
-
-      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-eye"></i> View
-        </h3>
-        <ul class="text-sm text-slate-700 space-y-1.5">
-          <li>• Save/Load UserView</li>
-          <li>• Manage View Layout</li>
-          <li>• Delete View Section</li>
-          <li>• Switch Normal - RGB (All)</li>
-          <li>• Orient To View</li>
-          <li>• TurnOff PointCloud</li>
-        </ul>
-      </div>
-
-      <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-        <h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-circle-info"></i> About
-        </h3>
-        <ul class="text-sm text-slate-700 space-y-1.5">
-          <li>• Setting</li>
-          <li>• Hướng Dẫn</li>
-          <li>• About</li>
-        </ul>
-      </div>
-    </div>
+    <!-- TOOL CATALOG -->
+    <h2 class="text-2xl font-bold text-slate-900 mb-2">Danh sách tool theo gói</h2>
+<p class="text-slate-600 text-sm mb-5">Tổng cộng 57 tool trên Ribbon. Lọc theo gói để xem chính xác mỗi gói có gì.</p>
+<div id="tier-filter" class="flex flex-wrap gap-2 mb-6"><button type="button" data-f="all" class="tf px-4 py-1.5 rounded-full text-sm font-semibold border border-slate-300 text-slate-600 hover:border-blue-500 transition">Tất cả (57)</button><button type="button" data-f="free" class="tf px-4 py-1.5 rounded-full text-sm font-semibold border border-slate-300 text-slate-600 hover:border-blue-500 transition">Free (29)</button><button type="button" data-f="pro" class="tf px-4 py-1.5 rounded-full text-sm font-semibold border border-slate-300 text-slate-600 hover:border-blue-500 transition">Pro (+17)</button><button type="button" data-f="ultra" class="tf px-4 py-1.5 rounded-full text-sm font-semibold border border-slate-300 text-slate-600 hover:border-blue-500 transition">Ultra (+11)</button></div>
+<div id="catalog" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12 items-start"><div class="tool-card bg-white border border-slate-200 rounded-xl p-5 shadow-sm"><h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-network-wired"></i> MEP Modeling <span class="text-xs font-normal text-slate-400">(23)</span></h3><ul class="text-sm"><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">1-Branch</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Vẽ nhánh ống vuông góc từ đầu ống, elbow theo thiết lập.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">1 Perp Link</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Nối 2 đối tượng MEP bằng 1 ống vuông góc: elbow ở 2 đầu hoặc Tee trên thân ống.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">2 Perp Link</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Nối 2 MEP bằng 2 ống vuông góc, liệt kê mọi tuyến hợp lệ (3 elbow hoặc kết thúc bằng Tee) kèm preview.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Bridge Connect</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Tạo đoạn MEP trung gian và elbow giữa 2 đối tượng.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Extend Connect</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Kéo dài 2 MEP gặp nhau và tạo elbow.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Tee Connect</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Nối ống nhánh vào ống chính bằng Tee.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">U Branch</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Tạo đoạn nối chữ U giữa 2 đầu ống hoặc từ thân 1 ống.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Line to MEP</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Chuyển Model Line đã chọn thành đối tượng MEP.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Draw MEP</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Vẽ line trực tiếp và tự chuyển thành MEP.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Scan to MEP</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Quét Point Cloud (tối thiểu 1,5×∅) để tạo 1 đoạn ống, chọn loại MEP ngay trên form.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Scan to MEP (Multi)</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Quét liên tục nhiều điểm, nhiều tuyến; ESC để chuyển tuyến hoặc kết thúc.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Connect MEP</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Connect / Disconnect nhanh từng cặp đối tượng MEP.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Connect MEP (Multi)</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Connect / Disconnect hàng loạt cho nhóm MEP chọn trước.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Auto Route</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Quét tay vài đoạn chính, tool tự seed toàn bộ tuyến từ các đầu ống tự do. Có thanh tiến trình.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Flex Smooth</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Làm mượt Flex Pipe / Flex Duct bằng slider (0% = hình dạng gốc, 150% = mượt tối đa).</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Place Flange</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Quét Point Cloud để dựng Flange (gắn comment PC_FLANGE).</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Place Sprinkler</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Tạo ống nhánh và gắn đầu phun theo hướng ống và hướng đầu sprinkler chọn ngay trong tool.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Rotate Cable Tray (90)</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Xoay các đoạn Cable Tray 90° quanh trục của chính nó.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Seed MEP</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Chọn Pipe / Duct / Conduit / Flex, tự động seed tuyến.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Snap Center Line</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Align và kéo dài đầu ống nhánh để snap thẳng vào tim ống chính.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Split Flex</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Tự động split Flex Pipe / Flex Duct.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Snap MEP</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Snap đầu của 1 ống vào đầu ống khác.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Snap MEP (Multi)</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Snap hàng loạt các đối tượng MEP.</p></li></ul></div>
+<div class="tool-card bg-white border border-slate-200 rounded-xl p-5 shadow-sm"><h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-cubes"></i> Family &amp; InPlace <span class="text-xs font-normal text-slate-400">(6)</span></h3><ul class="text-sm"><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Bolt Tool</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Đặt Bolt + long đền lên face (nhập 5 thông số) hoặc chỉnh sửa hàng loạt nhiều Bolt cùng lúc.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Convert InPlace To RFA</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Chuyển Model-In-Place thành Family.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Delete Box</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Xóa các khối hộp (DirectShape) do Place Box tạo ra.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Place Bolt</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Đặt Family bu-lông lên bề mặt bất kỳ.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Place Box</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Quét Point Cloud để tạo khối hộp bao đối tượng.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Place Hanger</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Đặt Family Hanger lên bề mặt bất kỳ.</p></li></ul></div>
+<div class="tool-card bg-white border border-slate-200 rounded-xl p-5 shadow-sm"><h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-wrench"></i> General Utilities <span class="text-xs font-normal text-slate-400">(21)</span></h3><ul class="text-sm"><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Circular Array</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Tạo Radial Array 360° cho family.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">MEP Switch</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Đổi Model Line / MEP curve đã chọn sang loại MEP khác.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Move to Point</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Copy / Move element đến điểm đích chọn trên face.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Family Export</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Export Family trong Project ra file .rfa.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Family Manager</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Quản lý thư viện family trên ổ đĩa (nhiều thư viện, tối đa 7 cấp thư mục).</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Manage Element</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Quản lý danh sách element đã lưu kèm trạng thái view.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Manage Project</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Theo dõi tiến độ: project → activity → task, tiến độ tự tính từ khối lượng dự kiến / thực tế.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Save Element</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Lưu element đang chọn vào Manage Element.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Show In-Place</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Isolate các Model In-Place trong view hiện hành.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Export View Templates</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Export View Template ra JSON (parameter, category, filter + rule, workset...).</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Import View Templates</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Import View Template từ JSON, tự tạo filter còn thiếu và áp override.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Center Tool</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Truy cập nhanh các button.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Align Box</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Căn Section Box + Camera theo element: lần 1 xoay +180°, lần 2 xoay +90°.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">RotateBox 90</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Xoay Camera 90° quanh trục Z, giữ vị trí nhìn từ trên xuống.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Set ViewRange</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Set View Range của Plan View theo phạm vi các element đã chọn.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Check Clash</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Quét MEP×Kết cấu, MEP×MEP, Kết cấu×Kết cấu; phân loại Clash / Duplicate theo % thể tích overlap (ngưỡng 5–100%).</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Clear Cache + GC</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Dọn rác và refresh cho Revit / pyRevit.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Delete All Box</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Xóa toàn bộ khối 3D do Place Box và Split ScopeBox tạo ra.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">History Sync</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Tự mở Show History với đường dẫn Central file.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Split ScopeBox</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Chia Scope Box / Section Box thành lưới X×Y×Z, tạo các khối 3D trong suốt đúng kích thước từng ô.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="ultra"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Workset Owner</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white">Ultra</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Thống kê khối lượng theo User.</p></li></ul></div>
+<div class="tool-card bg-white border border-slate-200 rounded-xl p-5 shadow-sm"><h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation"></i> Clash &amp; Graphic <span class="text-xs font-normal text-slate-400">(4)</span></h3><ul class="text-sm"><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Show Edges</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Bật / tắt nhanh đường viền (edges) của view.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">3 Section</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Một cú click tạo 3 view kiểm tra: Plan Callout, Cross Section, Longitudinal Section; tự mở Longitudinal.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Delete View Section</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Xóa toàn bộ Inspection View do 3 Section tạo ra.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Orient To View</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Xoay hướng nhìn 3D View theo một view khác (mặt bằng, đứng, cắt hoặc 3D khác).</p></li></ul></div>
+<div class="tool-card bg-white border border-slate-200 rounded-xl p-5 shadow-sm"><h3 class="font-semibold text-cyan-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-eye"></i> View <span class="text-xs font-normal text-slate-400">(3)</span></h3><ul class="text-sm"><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="pro"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Switch Color PC</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700">Pro</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Đổi nhanh chế độ màu Point Cloud: RGB, Single Color, Elevation, Intensity, Normals.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">Switch Normal - RGB PC</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Chuyển qua lại 2 chế độ RGB và Normals.</p></li><li class="tool-row py-2.5 border-t border-slate-100 first:border-t-0" data-tier="free"><div class="flex items-start justify-between gap-3"><span class="font-medium text-slate-800">TurnOff PointCloud</span><span class="shrink-0 text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">Free</span></div><p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Bật / tắt Point Cloud ở view đang mở.</p></li></ul></div>
+</div>
+<p class="text-xs text-slate-500 -mt-8 mb-12">Mọi gói đều có thêm nhóm About: Setting, Hướng Dẫn, About.</p>
+<script>
+(function(){var b=document.querySelectorAll('#tier-filter .tf'),rows=document.querySelectorAll('#catalog .tool-row'),cards=document.querySelectorAll('#catalog .tool-card');
+function set(f){b.forEach(function(x){var on=x.dataset.f===f;x.classList.toggle('bg-blue-600',on);x.classList.toggle('text-white',on);x.classList.toggle('border-blue-600',on);});
+rows.forEach(function(r){r.style.display=(f==='all'||r.dataset.tier===f)?'':'none';});
+cards.forEach(function(c){var any=[].some.call(c.querySelectorAll('.tool-row'),function(r){return r.style.display!=='none';});c.style.display=any?'':'none';});}
+b.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.f);});});set('all');})();
+</script>
 
     <!-- FEATURES -->
     <h2 class="text-2xl font-bold text-slate-900 mb-6">Tính năng chính</h2>
     <div class="space-y-4 mb-12">
-      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-        <h3 class="font-semibold text-cyan-700">1. Scan to MEP (Multi) &amp; Auto Route</h3>
-        <p class="text-slate-600 text-sm mt-1">Chọn vùng Point Cloud, tool tự động nhận diện và tạo Pipe / Duct / Cable Tray với kích thước và độ dốc phù hợp. Hỗ trợ multi-select.</p>
-      </div>
-      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-        <h3 class="font-semibold text-cyan-700">2. Connect / Dis MEP &amp; Extend Connect</h3>
-        <p class="text-slate-600 text-sm mt-1">Tự động nối các đoạn ống, chèn Fitting / Elbow phù hợp hoặc ngắt kết nối nhanh.</p>
-      </div>
-      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-        <h3 class="font-semibold text-cyan-700">3. Family Manager &amp; Convert InPlace</h3>
-        <p class="text-slate-600 text-sm mt-1">Quản lý Family, chuyển In-Place sang Family, Place Box, Circular Array, Bolt Tool.</p>
-      </div>
-      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-        <h3 class="font-semibold text-cyan-700">4. Check Clash &amp; Workset Owner</h3>
-        <p class="text-slate-600 text-sm mt-1">Kiểm tra va chạm giữa MEP và Point Cloud / Wall. Quản lý Workset Owner nhanh chóng (gói Ultra).</p>
-      </div>
-      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-        <h3 class="font-semibold text-cyan-700">5. View Utilities</h3>
-        <p class="text-slate-600 text-sm mt-1">Save/Load User View, quản lý View Layout, Switch Normal-RGB, Orient To View, Turn Off PointCloud.</p>
-      </div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm"><h3 class="font-semibold text-cyan-700">1. Scan to MEP (Multi) <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700 align-middle">Pro</span></h3><p class="text-slate-600 text-sm mt-1">Quét Point Cloud để lấy kích thước và tim ống, tool tạo Pipe / Duct / Cable Tray cho nhiều tuyến liên tục, không cần dựng tay từng đoạn.</p></div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm"><h3 class="font-semibold text-cyan-700">2. Auto Route &amp; Seed MEP <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white align-middle">Ultra</span></h3><p class="text-slate-600 text-sm mt-1">Quét tay vài đoạn chính, tool tự dò các đầu ống tự do và dựng tiếp phần còn lại của tuyến. Dừng bất cứ lúc nào bằng ESC, ống đã tạo được giữ nguyên.</p></div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm"><h3 class="font-semibold text-cyan-700">3. Connect, Snap &amp; Perp Link <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 align-middle">Free</span> <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700 align-middle">Pro (Multi)</span></h3><p class="text-slate-600 text-sm mt-1">Nối ống, chèn Elbow / Tee, snap đầu ống từng cặp (Free) hoặc hàng loạt (Pro).</p></div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm"><h3 class="font-semibold text-cyan-700">4. Check Clash &amp; Workset Owner <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-600 text-white align-middle">Ultra</span></h3><p class="text-slate-600 text-sm mt-1">Check Clash quét MEP × Kết cấu, MEP × MEP, Kết cấu × Kết cấu và tách Clash với Duplicate theo % thể tích overlap. Workset Owner thống kê khối lượng theo từng User.</p></div>
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm"><h3 class="font-semibold text-cyan-700">5. Family Manager, Bolt Tool &amp; 3 Section <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-cyan-50 text-cyan-700 align-middle">Pro</span></h3><p class="text-slate-600 text-sm mt-1">Quản lý thư viện family, đặt và chỉnh Bolt hàng loạt, chuyển In-Place sang Family, tạo bộ 3 view kiểm tra chỉ với một cú click.</p></div>
     </div>
   </main>
 
-  <footer class="bg-white border-t border-slate-200 py-8 mt-12">
-    <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-      © 2026 ScanToBIM pyRevit Extension
+  <footer class="bg-slate-900 text-slate-400 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-sm">
+        <div>
+          <a href="index.html" class="flex items-center gap-2.5 text-white font-bold text-lg mb-3"><span class="bg-blue-600 w-8 h-8 rounded-lg flex items-center justify-center"><i class="fa-solid fa-cube text-sm"></i></span>ScanToBIM Tools</a>
+          <p class="leading-relaxed">Bộ công cụ pyRevit tự động hóa quy trình Scan to BIM trong Autodesk Revit.</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Sản phẩm</p>
+          <div class="space-y-2.5"><a class="block hover:text-white transition" href="mep.html">Scan for MEP</a><a class="block hover:text-white transition" href="structural.html">Scan for Structural</a><a class="block hover:text-white transition" href="index.html#docs">Hướng dẫn cài đặt</a><a class="block hover:text-white transition" href="index.html#faq">Câu hỏi thường gặp</a></div>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Liên hệ</p>
+          <div class="space-y-2.5">
+            <a href="mailto:lethanvietltvo@gmail.com" class="flex items-center gap-2 hover:text-white transition"><i class="fa-solid fa-envelope w-4 text-blue-400"></i>lethanvietltvo@gmail.com</a>
+            <a href="https://zalo.me/0857263521" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-white transition"><i class="fa-solid fa-phone w-4 text-blue-400"></i>Zalo: 0857263521</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Thông tin</p>
+          <ul class="space-y-2"><li>Phiên bản: 1.0</li><li>Hỗ trợ: Revit 2021 – 2026</li><li>Giấy phép: Thương mại</li></ul>
+        </div>
+      </div>
+      <p class="text-xs text-slate-500 mt-12 pt-6 border-t border-slate-800 text-center">© 2026 ScanToBIM Tools. Autodesk và Revit là thương hiệu của Autodesk, Inc.</p>
     </div>
   </footer>
-
-  <script>
-    (async function () {
-      const button = document.getElementById('free-download-btn');
-      if (!button) return;
-      try {
-        const response = await fetch('download_urls.txt', { cache: 'no-store' });
-        if (!response.ok) throw new Error('Could not load download_urls.txt');
-        const content = await response.text();
-        const line = content.split(/\r?\n/).find(row => row.trim().startsWith('FREE_DOWNLOAD_URL='));
-        const url = line ? line.substring(line.indexOf('=') + 1).trim() : '';
-        if (url && /^https?:\/\//i.test(url) && !url.includes('example.com/your-free-download.zip')) {
-          button.href = url;
-          button.target = '_blank';
-          button.rel = 'noopener noreferrer';
-        } else {
-          button.href = '#';
-          button.addEventListener('click', function (event) {
-            event.preventDefault();
-            alert('Hãy cập nhật FREE_DOWNLOAD_URL trong file download_urls.txt trước khi sử dụng nút Download.');
-          });
-        }
-      } catch (error) {
-        button.href = '#';
-        button.addEventListener('click', function (event) {
-          event.preventDefault();
-          alert('Không đọc được download_urls.txt. Hãy đảm bảo file này nằm trong thư mục gốc, cùng cấp với index.html.');
-        });
-      }
-    })();
-  </script>
 </body>
 </html>

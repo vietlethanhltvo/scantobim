@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký - ScanToBIM Tools</title>
+  <meta name="description" content="Đăng ký dùng thử, gói Pro, Ultra hoặc nhận báo giá công ty cho ScanToBIM Tools.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="theme-color" content="#2563eb">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ScanToBIM Tools — pyRevit cho Scan to BIM">
+  <meta property="og:description" content="Chuyển Point Cloud thành mô hình MEP và Kết cấu trong Revit nhanh, chính xác.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/config.js" defer></script>
+  <script src="assets/site.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2.5 text-lg font-bold tracking-tight text-slate-900">
+          <span class="bg-blue-600 w-9 h-9 rounded-lg flex items-center justify-center"><i class="fa-solid fa-cube text-white"></i></span>
+          <span>ScanToBIM <span class="text-blue-600">Tools</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600" aria-label="Điều hướng chính">
+          <a class="nav-link hover:text-blue-600 transition" href="mep.html">Scan for MEP</a>
+          <a class="nav-link hover:text-blue-600 transition" href="structural.html">Scan for Structural</a>
+          <a class="nav-link hover:text-blue-600 transition" href="index.html#demo-videos">Demo</a>
+          <a class="nav-link hover:text-blue-600 transition" href="index.html#docs">Hướng dẫn</a>
+          <a class="nav-link hover:text-blue-600 transition" href="contact.html">Liên hệ</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="index.html#products" class="hidden sm:inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Xem bảng giá</a>
+          <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-slate-900 w-10 h-10 flex items-center justify-center" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-menu"><i class="fa-solid fa-bars text-lg"></i></button>
+        </div>
+      </div>
+      <nav id="mobile-menu" class="hidden md:hidden flex flex-col pb-4 text-sm font-medium text-slate-700" aria-label="Menu di động">
+        <a class="nav-link py-2.5" href="mep.html">Scan for MEP</a>
+        <a class="nav-link py-2.5" href="structural.html">Scan for Structural</a>
+        <a class="nav-link py-2.5" href="index.html#demo-videos">Demo</a>
+        <a class="nav-link py-2.5" href="index.html#docs">Hướng dẫn</a>
+        <a class="nav-link py-2.5" href="contact.html">Liên hệ</a>
+        <a href="index.html#products" class="bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold mt-2 text-center">Xem bảng giá</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="max-w-3xl mx-auto px-4 pt-6 text-sm text-slate-500" aria-label="Breadcrumb"><a href="index.html" class="hover:text-blue-600">Trang chủ</a> <span class="mx-1">/</span> <span class="text-slate-800 font-medium">Đăng ký</span></nav>
+
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <span id="reg-eyebrow" class="text-blue-600 font-bold text-sm tracking-widest uppercase">Đăng ký</span>
+    <h1 id="reg-title" class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2 mb-3">Đăng ký</h1>
+    <p id="reg-desc" class="text-slate-600 mb-6">Điền thông tin bên dưới, chúng tôi sẽ liên hệ lại sớm nhất qua email.</p>
+
+    <div id="reg-note" class="hidden bg-amber-50 border border-amber-200 text-amber-900 text-sm rounded-xl p-4 mb-6 leading-relaxed">
+      <i class="fa-solid fa-screwdriver-wrench mr-1.5"></i> <b>Scan for Structural đang phát triển.</b> Đăng ký của bạn được ghi nhận trước, chúng tôi sẽ liên hệ khi có bản thử nghiệm hoặc phát hành chính thức.
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+      <form id="reg-form" novalidate>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="sm:col-span-1">
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="f-product">Sản phẩm</label>
+            <select id="f-product" name="product" class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+              <option value="mep">Scan for MEP</option>
+              <option value="structural">Scan for Structural (đang phát triển)</option>
+            </select>
+          </div>
+          <div class="sm:col-span-1">
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="f-plan">Nội dung đăng ký</label>
+            <select id="f-plan" name="plan" class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"></select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="f-name">Họ tên <span class="text-red-500">*</span></label>
+            <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Nguyễn Văn A" class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="f-email">Email <span class="text-red-500">*</span></label>
+            <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="ban@congty.com" class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="f-phone">Số điện thoại / Zalo <span class="font-normal text-slate-400">(không bắt buộc)</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="09xx xxx xxx" class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="f-company">Công ty <span class="font-normal text-slate-400">(nếu có)</span></label>
+            <input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Tên công ty" class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="f-revit">Phiên bản Revit</label>
+            <select id="f-revit" name="revit" class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+              <option value="">Chọn phiên bản</option>
+              <option>Revit 2021</option><option>Revit 2022</option><option>Revit 2023</option>
+              <option>Revit 2024</option><option>Revit 2025</option><option>Revit 2026</option>
+              <option>Khác</option>
+            </select>
+          </div>
+          <div id="seats-wrap" class="hidden">
+            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="f-seats">Số lượng seat <span id="seats-req" class="text-red-500 hidden">*</span></label>
+            <input id="f-seats" name="seats" type="number" min="1" inputmode="numeric" placeholder="VD: 5" class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+          </div>
+        </div>
+
+        <p id="quote-hint" class="hidden mt-3 text-xs text-slate-500 bg-slate-50 border border-slate-200 rounded-lg p-3">Ưu đãi theo số lượng: từ 3 seat giảm 10%, từ 6 seat giảm 15%, trên 10 seat báo giá riêng.</p>
+
+        <div class="mt-4">
+          <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="f-message">Ghi chú <span class="font-normal text-slate-400">(không bắt buộc)</span></label>
+          <textarea id="f-message" name="message" rows="4" placeholder="Bạn cần hỗ trợ gì thêm? VD: loại công trình, bộ môn đang làm..." class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition"></textarea>
+        </div>
+
+        <div id="reg-error" class="hidden mt-4 bg-red-50 border border-red-200 text-red-800 text-sm rounded-lg p-3" role="alert"></div>
+
+        <button id="reg-submit" type="submit" class="mt-6 w-full bg-blue-600 hover:bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition shadow-lg shadow-blue-500/20">
+          <span id="reg-submit-label">Gửi đăng ký →</span>
+        </button>
+        <p class="text-xs text-slate-400 mt-3 text-center">Thông tin chỉ được dùng để liên hệ tư vấn và cấp quyền sử dụng tool.</p>
+      </form>
+
+      <div id="reg-success" class="hidden text-center py-6" role="status">
+        <span class="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-3xl mx-auto mb-5"><i class="fa-solid fa-check"></i></span>
+        <h2 class="text-2xl font-bold text-slate-900 mb-2">Đã gửi đăng ký!</h2>
+        <p class="text-slate-600 mb-1">Cảm ơn <b id="ok-name"></b>. Chúng tôi đã nhận thông tin cho <b id="ok-plan"></b> và sẽ liên hệ lại sớm nhất.</p>
+        <p class="text-sm text-slate-500 mb-6">Cần gấp? Nhắn Zalo <a class="text-blue-600 font-semibold" href="https://zalo.me/0857263521" target="_blank" rel="noopener">0857263521</a>.</p>
+        <a href="index.html" class="inline-block bg-slate-900 hover:bg-slate-700 text-white font-semibold px-6 py-2.5 rounded-lg transition">Về trang chủ</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-sm">
+        <div>
+          <a href="index.html" class="flex items-center gap-2.5 text-white font-bold text-lg mb-3"><span class="bg-blue-600 w-8 h-8 rounded-lg flex items-center justify-center"><i class="fa-solid fa-cube text-sm"></i></span>ScanToBIM Tools</a>
+          <p class="leading-relaxed">Bộ công cụ pyRevit tự động hóa quy trình Scan to BIM trong Autodesk Revit.</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Sản phẩm</p>
+          <div class="space-y-2.5"><a class="block hover:text-white transition" href="mep.html">Scan for MEP</a><a class="block hover:text-white transition" href="structural.html">Scan for Structural</a><a class="block hover:text-white transition" href="index.html#docs">Hướng dẫn cài đặt</a><a class="block hover:text-white transition" href="index.html#faq">Câu hỏi thường gặp</a></div>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Liên hệ</p>
+          <div class="space-y-2.5">
+            <a href="mailto:lethanvietltvo@gmail.com" class="flex items-center gap-2 hover:text-white transition"><i class="fa-solid fa-envelope w-4 text-blue-400"></i>lethanvietltvo@gmail.com</a>
+            <a href="https://zalo.me/0857263521" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-white transition"><i class="fa-solid fa-phone w-4 text-blue-400"></i>Zalo: 0857263521</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Thông tin</p>
+          <ul class="space-y-2"><li>Phiên bản: 1.0</li><li>Hỗ trợ: Revit 2021 – 2026</li><li>Giấy phép: Thương mại</li></ul>
+        </div>
+      </div>
+      <p class="text-xs text-slate-500 mt-12 pt-6 border-t border-slate-800 text-center">© 2026 ScanToBIM Tools. Autodesk và Revit là thương hiệu của Autodesk, Inc.</p>
+    </div>
+  </footer>
+  <script src="assets/register.js" defer></script>
+</body>
+</html>

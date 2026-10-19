@@ -8,95 +8,75 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="theme-color" content="#2563eb">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ScanToBIM Tools — pyRevit cho Scan to BIM">
+  <meta property="og:description" content="Chuyển Point Cloud thành mô hình MEP và Kết cấu trong Revit nhanh, chính xác.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/config.js" defer></script>
+  <script src="assets/site.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="index.html" class="text-xl font-bold text-slate-900 flex items-center gap-2">
-        <div class="bg-blue-600 p-1.5 rounded-lg">
-          <i class="fa-solid fa-cube text-lg text-white"></i>
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2.5 text-lg font-bold tracking-tight text-slate-900">
+          <span class="bg-blue-600 w-9 h-9 rounded-lg flex items-center justify-center"><i class="fa-solid fa-cube text-white"></i></span>
+          <span>ScanToBIM <span class="text-blue-600">Tools</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600" aria-label="Điều hướng chính">
+          <a class="nav-link hover:text-blue-600 transition" href="mep.html">Scan for MEP</a>
+          <a class="nav-link hover:text-blue-600 transition" href="structural.html">Scan for Structural</a>
+          <a class="nav-link hover:text-blue-600 transition" href="index.html#demo-videos">Demo</a>
+          <a class="nav-link hover:text-blue-600 transition" href="index.html#docs">Hướng dẫn</a>
+          <a class="nav-link hover:text-blue-600 transition" href="contact.html">Liên hệ</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="index.html#products" class="hidden sm:inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Xem bảng giá</a>
+          <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-slate-900 w-10 h-10 flex items-center justify-center" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-menu"><i class="fa-solid fa-bars text-lg"></i></button>
         </div>
-        ScanToBIM <span class="text-blue-600">Tools</span>
-      </a>
-      <a href="index.html" class="text-slate-600 hover:text-blue-600 text-sm font-medium transition flex items-center gap-1">
-        <i class="fa-solid fa-house"></i> HOME
-      </a>
+      </div>
+      <nav id="mobile-menu" class="hidden md:hidden flex flex-col pb-4 text-sm font-medium text-slate-700" aria-label="Menu di động">
+        <a class="nav-link py-2.5" href="mep.html">Scan for MEP</a>
+        <a class="nav-link py-2.5" href="structural.html">Scan for Structural</a>
+        <a class="nav-link py-2.5" href="index.html#demo-videos">Demo</a>
+        <a class="nav-link py-2.5" href="index.html#docs">Hướng dẫn</a>
+        <a class="nav-link py-2.5" href="contact.html">Liên hệ</a>
+        <a href="index.html#products" class="bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold mt-2 text-center">Xem bảng giá</a>
+      </nav>
     </div>
   </header>
 
-  <main class="max-w-2xl mx-auto px-4 py-16">
-    <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Contact</h1>
-    <p class="text-slate-600 text-lg mb-12">Liên hệ để được tư vấn gói Free / Pro / Ultra phù hợp với nhu cầu của bạn.</p>
-
-    <div class="space-y-8">
-      <!-- Email -->
-      <div class="flex items-start gap-5">
-        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center shrink-0 border border-orange-100">
-          <i class="fa-solid fa-envelope text-2xl text-orange-500"></i>
-        </div>
-        <div>
-          <p class="text-slate-500 text-sm font-medium mb-1">Email</p>
-          <a href="mailto:lethanvietltvo@gmail.com" class="text-lg text-slate-900 hover:text-blue-600 transition">
-            lethanvietltvo@gmail.com
-          </a>
-        </div>
-      </div>
-
-      <!-- Zalo -->
-      <div class="flex items-start gap-5">
-        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center shrink-0 border border-blue-100">
-          <span class="text-blue-600 font-bold text-sm">Zalo</span>
-        </div>
-        <div>
-          <p class="text-slate-500 text-sm font-medium mb-1">Zalo</p>
-          <a href="https://zalo.me/0857263521" target="_blank" rel="noopener" class="text-lg text-slate-900 hover:text-blue-600 transition">
-            0857263521
-          </a>
-        </div>
-      </div>
-
-      <!-- GitHub -->
-      <div class="flex items-start gap-5">
-        <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center shrink-0 border border-slate-200">
-          <i class="fa-brands fa-github text-2xl text-slate-800"></i>
-        </div>
-        <div>
-          <p class="text-slate-500 text-sm font-medium mb-1">GitHub</p>
-          <a href="https://github.com/" target="_blank" rel="noopener" class="text-lg text-slate-900 hover:text-blue-600 transition">
-            github.com (cập nhật link repo)
-          </a>
-        </div>
-      </div>
-
-      <!-- LinkedIn -->
-      <div class="flex items-start gap-5">
-        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center shrink-0 border border-blue-100">
-          <i class="fa-brands fa-linkedin text-2xl text-blue-700"></i>
-        </div>
-        <div>
-          <p class="text-slate-500 text-sm font-medium mb-1">LinkedIn</p>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="text-lg text-slate-900 hover:text-blue-600 transition">
-            LinkedIn (cập nhật profile)
-          </a>
-        </div>
-      </div>
+  <main class="max-w-3xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Liên hệ</h1>
+    <p class="text-slate-600 text-lg mb-10">Cần tư vấn chọn gói Free / Pro / Ultra, dùng thử 7 ngày, báo giá công ty hoặc hỗ trợ cài đặt? Hãy liên hệ trực tiếp qua kênh bên dưới hoặc điền form đăng ký.</p>
+    <div class="grid sm:grid-cols-2 gap-4">
+      <a href="mailto:lethanvietltvo@gmail.com"  class="flex items-center gap-4 bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-400 hover:shadow-md transition">
+        <span class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center shrink-0 text-xl"><i class="fa-solid fa-envelope text-orange-500"></i></span>
+        <span><span class="block text-xs font-medium text-slate-500">Email</span><span class="block text-lg font-semibold text-slate-900 break-all">lethanvietltvo@gmail.com</span></span></a>
+      <a href="https://zalo.me/0857263521" target="_blank" rel="noopener" class="flex items-center gap-4 bg-white border border-slate-200 rounded-2xl p-5 hover:border-blue-400 hover:shadow-md transition">
+        <span class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 text-xl"><i class="fa-solid fa-comment-dots text-blue-600"></i></span>
+        <span><span class="block text-xs font-medium text-slate-500">Zalo</span><span class="block text-lg font-semibold text-slate-900 break-all">0857263521</span></span></a>
     </div>
-
-    <div class="mt-16 pt-8 border-t border-slate-200 grid sm:grid-cols-3 gap-4 text-sm text-slate-600">
-      <div>
-        <p class="font-semibold text-slate-800 mb-1">Version</p>
-        <p>1.0</p>
+    <div class="mt-12 bg-white border border-slate-200 rounded-2xl p-6">
+      <h2 class="text-lg font-bold text-slate-900 mb-1">Đăng ký nhanh</h2>
+      <p class="text-sm text-slate-500 mb-5">Chọn mục bạn cần, điền thông tin trên form, chúng tôi sẽ liên hệ lại sớm nhất.</p>
+      <p class="text-xs font-bold tracking-widest uppercase text-cyan-600 mb-2">Scan for MEP</p>
+      <div class="grid sm:grid-cols-3 gap-3">
+        <a href="register.html?plan=trial&amp;product=mep" class="block text-center bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg py-2.5 text-sm font-semibold transition">Đăng ký dùng thử →</a>
+        <a href="register.html?plan=pro&amp;product=mep" class="block text-center bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg py-2.5 text-sm font-semibold transition">Đăng ký gói Pro →</a>
+        <a href="register.html?plan=ultra&amp;product=mep" class="block text-center bg-blue-600 hover:bg-blue-500 text-white rounded-lg py-2.5 text-sm font-semibold transition">Đăng ký gói Ultra →</a>
       </div>
-      <div>
-        <p class="font-semibold text-slate-800 mb-1">Supported Revit</p>
-        <p>2021 – 2026</p>
+      <p class="text-xs font-bold tracking-widest uppercase text-blue-600 mt-5 mb-2">Scan for Structural <span class="normal-case tracking-normal font-semibold text-amber-600">· đang phát triển</span></p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <a href="register.html?plan=pro&amp;product=structural" class="block text-center bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg py-2.5 text-sm font-semibold transition">Đăng ký gói Pro →</a>
+        <a href="register.html?plan=ultra&amp;product=structural" class="block text-center bg-blue-600 hover:bg-blue-500 text-white rounded-lg py-2.5 text-sm font-semibold transition">Đăng ký gói Ultra →</a>
       </div>
-      <div>
-        <p class="font-semibold text-slate-800 mb-1">License</p>
-        <p>Commercial</p>
-      </div>
+      <a href="register.html?plan=quote&amp;product=mep" class="mt-5 block text-center bg-slate-900 hover:bg-slate-700 text-white rounded-lg py-2.5 text-sm font-semibold transition">Nhận báo giá công ty →</a>
     </div>
   </main>
 

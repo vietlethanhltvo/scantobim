@@ -3,44 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scan for Structural - pyRevit Tool</title>
-  <meta name="description" content="Scan for Structural - bộ công cụ pyRevit tự động dựng Cột, Dầm, Sàn, Tường từ dữ liệu Point Cloud.">
+  <title>Scan for Structural (đang phát triển) - pyRevit Tool</title>
+  <meta name="description" content="Scan for Structural - bộ công cụ pyRevit dựng Cột, Dầm / Khung thép từ Point Cloud, đang trong giai đoạn phát triển. Đăng ký sớm để nhận thông báo.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="theme-color" content="#2563eb">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ScanToBIM Tools — pyRevit cho Scan to BIM">
+  <meta property="og:description" content="Chuyển Point Cloud thành mô hình MEP và Kết cấu trong Revit nhanh, chính xác.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/config.js" defer></script>
+  <script src="assets/site.js" defer></script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans">
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="index.html" class="text-xl font-bold text-slate-900 flex items-center gap-2">
-        <i class="fa-solid fa-arrow-left text-sm text-blue-600"></i> Trang chủ / <span class="text-blue-600">Scan for Structural</span>
-      </a>
-      <a href="contact.html" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Liên hệ</a>
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2.5 text-lg font-bold tracking-tight text-slate-900">
+          <span class="bg-blue-600 w-9 h-9 rounded-lg flex items-center justify-center"><i class="fa-solid fa-cube text-white"></i></span>
+          <span>ScanToBIM <span class="text-blue-600">Tools</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600" aria-label="Điều hướng chính">
+          <a class="nav-link hover:text-blue-600 transition" href="mep.html">Scan for MEP</a>
+          <a class="nav-link hover:text-blue-600 transition" href="structural.html">Scan for Structural</a>
+          <a class="nav-link hover:text-blue-600 transition" href="index.html#demo-videos">Demo</a>
+          <a class="nav-link hover:text-blue-600 transition" href="index.html#docs">Hướng dẫn</a>
+          <a class="nav-link hover:text-blue-600 transition" href="contact.html">Liên hệ</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="index.html#products" class="hidden sm:inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Xem bảng giá</a>
+          <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-slate-900 w-10 h-10 flex items-center justify-center" aria-label="Mở menu" aria-expanded="false" aria-controls="mobile-menu"><i class="fa-solid fa-bars text-lg"></i></button>
+        </div>
+      </div>
+      <nav id="mobile-menu" class="hidden md:hidden flex flex-col pb-4 text-sm font-medium text-slate-700" aria-label="Menu di động">
+        <a class="nav-link py-2.5" href="mep.html">Scan for MEP</a>
+        <a class="nav-link py-2.5" href="structural.html">Scan for Structural</a>
+        <a class="nav-link py-2.5" href="index.html#demo-videos">Demo</a>
+        <a class="nav-link py-2.5" href="index.html#docs">Hướng dẫn</a>
+        <a class="nav-link py-2.5" href="contact.html">Liên hệ</a>
+        <a href="index.html#products" class="bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold mt-2 text-center">Xem bảng giá</a>
+      </nav>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4 py-12">
-    <span class="text-blue-600 font-bold text-sm tracking-widest uppercase">Structural Module</span>
+  <nav class="max-w-5xl mx-auto px-4 pt-6 text-sm text-slate-500" aria-label="Breadcrumb"><a href="index.html" class="hover:text-blue-600">Trang chủ</a> <span class="mx-1">/</span> <span class="text-slate-800 font-medium">Scan for Structural</span></nav>
+  <main class="max-w-5xl mx-auto px-4 py-8">
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="text-blue-600 font-bold text-sm tracking-widest uppercase">Structural Module</span>
+      <span class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full"><i class="fa-solid fa-screwdriver-wrench"></i> ĐANG PHÁT TRIỂN</span>
+    </div>
     <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-6">Scan for Structural pyRevit Tools</h1>
-    <p class="text-slate-600 text-lg mb-8">
-      Giải pháp tăng tốc dựng mô hình Kết cấu (Dầm, Cột, Tường, Sàn) từ dữ liệu trắc địa Point Cloud.
+    <p class="text-slate-600 text-lg mb-6">
+      Bộ công cụ dựng mô hình Kết cấu từ dữ liệu Point Cloud. Phiên bản đầu tiên tập trung vào <b>Cột và Dầm / Khung thép</b>; các tính năng Tường, Sàn sẽ bổ sung ở các bản sau.
     </p>
 
+    <!-- THÔNG BÁO TRẠNG THÁI -->
+    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-8 flex flex-col sm:flex-row sm:items-center gap-4">
+      <span class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-bell"></i></span>
+      <p class="text-sm text-amber-900 leading-relaxed flex-1">
+        Tool đang trong giai đoạn phát triển và <b>chưa phát hành chính thức</b>. Nội dung và giá bên dưới là <b>dự kiến</b>, có thể thay đổi khi phát hành. Bạn có thể đăng ký trước, chúng tôi sẽ liên hệ khi có bản thử nghiệm.
+      </p>
+      <a href="register.html?plan=pro&amp;product=structural" class="shrink-0 text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2.5 rounded-lg transition text-sm">Đăng ký sớm →</a>
+    </div>
+
     <!-- DEMO VIDEO -->
-    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden mb-12 shadow-sm">
+    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden mb-3 shadow-sm">
       <video class="w-full aspect-video bg-slate-900" controls preload="none" poster="video/thumb_structural.jpg">
         <source src="video/video_structural.mp4" type="video/mp4">
       </video>
     </div>
+    <p class="text-xs text-slate-500 mb-12 text-center">Video demo bản thử nghiệm, giao diện và tính năng có thể thay đổi khi phát hành.</p>
 
-    <!-- PRICING (merged from pricing_Struc.html) -->
+    <!-- LỘ TRÌNH TÍNH NĂNG -->
+    <section id="roadmap" class="mb-14">
+      <h2 class="text-2xl font-bold text-slate-900 mb-2">Tính năng &amp; lộ trình</h2>
+      <p class="text-slate-600 text-sm mb-6">Những gì đang được làm và những gì dự kiến bổ sung.</p>
+      <div class="space-y-4">
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+            <h3 class="font-semibold text-blue-700">1. Column &amp; Framing Extraction</h3>
+            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800">ĐANG PHÁT TRIỂN</span>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">Quét từng đoạn cột / dầm từ Point Cloud, nhận diện tiết diện thép <b>H/I, L, C, T</b> và dựng phần tử Revit tương ứng đúng vị trí, kích thước.</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+            <h3 class="font-semibold text-blue-700">2. Wall &amp; Floor Surface Generator</h3>
+            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">KẾ HOẠCH</span>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">Dựng tường và sàn khớp theo bề mặt thực tế bị nghiêng hoặc biến dạng của công trình.</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+            <h3 class="font-semibold text-blue-700">3. Check Clash</h3>
+            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">KẾ HOẠCH</span>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">Kiểm tra va chạm giữa mô hình kết cấu vừa dựng với các bộ môn khác.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
     <section id="pricing" class="mb-14">
       <div class="text-center mb-8">
-        <span class="text-blue-600 font-bold text-sm tracking-widest uppercase">Bảng giá</span>
+        <span class="text-blue-600 font-bold text-sm tracking-widest uppercase">Bảng giá dự kiến</span>
         <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">Bảng Giá Tool</h2>
-        <p class="text-slate-600 mt-2">Gói theo năm – cập nhật miễn phí trong thời gian sử dụng</p>
+        <p class="text-slate-600 mt-2">Thanh toán theo năm, cập nhật miễn phí trong suốt thời gian sử dụng. Giá có thể điều chỉnh khi phát hành chính thức.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
@@ -49,16 +122,16 @@
         <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col shadow-sm">
           <div class="text-center mb-6">
             <span class="inline-block bg-slate-100 text-slate-600 text-sm font-semibold px-4 py-1 rounded-full">Free</span>
-            <div class="mt-4 text-3xl font-bold text-slate-900">-</div>
+            <div class="mt-4 text-3xl font-bold text-slate-900">0<span class="text-base font-normal text-slate-500">đ</span></div>
             <p class="text-slate-500 text-sm mt-1">Miễn phí</p>
           </div>
           <ul class="space-y-3 text-sm text-slate-700 flex-grow">
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 50+ button cơ bản</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Column &amp; Beam Extraction</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Wall &amp; Floor Surface Generator</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Check Clash</li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Các button tiện ích cơ bản</span></li>
+            <li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Column &amp; Framing Extraction</span></li>
+            <li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Wall &amp; Floor Surface Generator</span></li>
+            <li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Check Clash</span></li>
           </ul>
-          <a id="free-download-btn" href="#" class="mt-6 block text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold py-2.5 rounded-lg transition">Download ↓</a>
+          <a id="free-download-btn" href="#" class="mt-6 block text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold py-2.5 rounded-lg transition">Nhận bản Free →</a>
         </div>
 
         <!-- PRO -->
@@ -66,84 +139,74 @@
           <div class="text-center mb-6">
             <span class="inline-block bg-indigo-50 text-indigo-700 text-sm font-semibold px-4 py-1 rounded-full">Pro</span>
             <div class="mt-4 text-3xl font-bold text-slate-900">1.490.000<span class="text-base font-normal text-slate-500">đ/năm</span></div>
+            <p class="text-slate-500 text-sm mt-1">Giá dự kiến</p>
           </div>
           <ul class="space-y-3 text-sm text-slate-700 flex-grow">
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 50+ button cơ bản</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Column &amp; Beam Extraction</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Wall &amp; Floor Surface Generator</li>
-            <li class="flex items-center text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2"></i> Check Clash</li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Các button tiện ích cơ bản</span></li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Column &amp; Framing Extraction</span></li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Wall &amp; Floor Surface Generator</span></li>
+            <li class="flex items-start text-slate-400"><i class="fa-solid fa-xmark text-red-400 mr-2 mt-0.5 shrink-0"></i><span>Check Clash</span></li>
           </ul>
-          <a href="contact.html" class="mt-6 block text-center bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 rounded-lg transition">Liên hệ →</a>
+          <a href="register.html?plan=pro&amp;product=structural" class="mt-6 block text-center bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2.5 rounded-lg transition">Đăng ký gói Pro →</a>
         </div>
 
         <!-- ULTRA -->
         <div class="bg-white border-2 border-blue-500 rounded-2xl p-6 flex flex-col shadow-md relative">
-          <span class="absolute -top-3 right-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">BEST VALUE</span>
+          <span class="absolute -top-3 right-6 pulse-ring bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">BEST VALUE</span>
           <div class="text-center mb-6">
             <span class="inline-block bg-blue-50 text-blue-700 text-sm font-semibold px-4 py-1 rounded-full">Ultra</span>
             <div class="mt-4 text-3xl font-bold text-blue-600">2.290.000<span class="text-base font-normal text-slate-500">đ/năm</span></div>
+            <p class="text-slate-500 text-sm mt-1">Giá dự kiến</p>
           </div>
           <ul class="space-y-3 text-sm text-slate-700 flex-grow">
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 50+ button cơ bản</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Column &amp; Beam Extraction</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Wall &amp; Floor Surface Generator</li>
-            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Check Clash</li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Các button tiện ích cơ bản</span></li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Column &amp; Framing Extraction</span></li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Wall &amp; Floor Surface Generator</span></li>
+            <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mr-2 mt-0.5 shrink-0"></i><span>Check Clash</span></li>
           </ul>
-          <a href="contact.html" class="mt-6 block text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-lg transition shadow-lg shadow-blue-500/20">Liên hệ →</a>
+          <a href="register.html?plan=ultra&amp;product=structural" class="mt-6 block text-center bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-lg transition shadow-lg shadow-blue-500/20">Đăng ký gói Ultra →</a>
         </div>
 
       </div>
     </section>
 
-    <!-- TÍNH NĂNG CHI TIẾT -->
-    <h2 class="text-2xl font-bold text-slate-900 mb-6">Tính năng chính</h2>
-    <div class="space-y-4">
-      <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-        <h3 class="font-semibold text-blue-700">1. Column &amp; Beam Extraction</h3>
-        <p class="text-slate-600 text-sm mt-1">Trích xuất nhanh kích thước và vị trí dầm/cột thép, bê tông từ Point Cloud.</p>
+    <!-- COMPANY -->
+    <section id="company" class="mb-6">
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-2"><span class="w-10 h-10 rounded-lg bg-slate-900 text-white flex items-center justify-center"><i class="fa-solid fa-building"></i></span><h2 class="text-xl md:text-2xl font-bold text-slate-900">Gói dành cho công ty</h2></div>
+          <p class="text-slate-600 text-sm leading-relaxed">Cần nhiều seat cho cả nhóm? Gửi thông tin để nhận báo giá theo số lượng, kèm hỗ trợ cài đặt cho cả nhóm.</p>
+        </div>
+        <a href="register.html?plan=quote&amp;product=structural" class="shrink-0 text-center bg-slate-900 hover:bg-slate-700 text-white font-semibold px-6 py-3 rounded-lg transition">Nhận báo giá công ty →</a>
       </div>
-      <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-        <h3 class="font-semibold text-blue-700">2. Wall &amp; Floor Surface Generator</h3>
-        <p class="text-slate-600 text-sm mt-1">Dựng tường và sàn khớp theo bề mặt thực tế bị nghiêng hoặc biến dạng của công trình.</p>
-      </div>
-    </div>
+    </section>
   </main>
 
-  <footer class="bg-white border-t border-slate-200 py-8 mt-12">
-    <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-      © 2026 ScanToBIM pyRevit Extension
+  <footer class="bg-slate-900 text-slate-400 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-sm">
+        <div>
+          <a href="index.html" class="flex items-center gap-2.5 text-white font-bold text-lg mb-3"><span class="bg-blue-600 w-8 h-8 rounded-lg flex items-center justify-center"><i class="fa-solid fa-cube text-sm"></i></span>ScanToBIM Tools</a>
+          <p class="leading-relaxed">Bộ công cụ pyRevit tự động hóa quy trình Scan to BIM trong Autodesk Revit.</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Sản phẩm</p>
+          <div class="space-y-2.5"><a class="block hover:text-white transition" href="mep.html">Scan for MEP</a><a class="block hover:text-white transition" href="structural.html">Scan for Structural</a><a class="block hover:text-white transition" href="index.html#docs">Hướng dẫn cài đặt</a><a class="block hover:text-white transition" href="index.html#faq">Câu hỏi thường gặp</a></div>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Liên hệ</p>
+          <div class="space-y-2.5">
+            <a href="mailto:lethanvietltvo@gmail.com" class="flex items-center gap-2 hover:text-white transition"><i class="fa-solid fa-envelope w-4 text-blue-400"></i>lethanvietltvo@gmail.com</a>
+            <a href="https://zalo.me/0857263521" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-white transition"><i class="fa-solid fa-phone w-4 text-blue-400"></i>Zalo: 0857263521</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Thông tin</p>
+          <ul class="space-y-2"><li>Trạng thái: Đang phát triển</li><li>Hỗ trợ: Revit 2021 – 2026</li><li>Giấy phép: Thương mại</li></ul>
+        </div>
+      </div>
+      <p class="text-xs text-slate-500 mt-12 pt-6 border-t border-slate-800 text-center">© 2026 ScanToBIM Tools. Autodesk và Revit là thương hiệu của Autodesk, Inc.</p>
     </div>
   </footer>
-
-  <script>
-    (async function () {
-      const button = document.getElementById('free-download-btn');
-      if (!button) return;
-      try {
-        const response = await fetch('download_urls.txt', { cache: 'no-store' });
-        if (!response.ok) throw new Error('Could not load download_urls.txt');
-        const content = await response.text();
-        const line = content.split(/\r?\n/).find(row => row.trim().startsWith('FREE_DOWNLOAD_URL='));
-        const url = line ? line.substring(line.indexOf('=') + 1).trim() : '';
-        if (url && /^https?:\/\//i.test(url) && !url.includes('example.com/your-free-download.zip')) {
-          button.href = url;
-          button.target = '_blank';
-          button.rel = 'noopener noreferrer';
-        } else {
-          button.href = '#';
-          button.addEventListener('click', function (event) {
-            event.preventDefault();
-            alert('Hãy cập nhật FREE_DOWNLOAD_URL trong file download_urls.txt trước khi sử dụng nút Download.');
-          });
-        }
-      } catch (error) {
-        button.href = '#';
-        button.addEventListener('click', function (event) {
-          event.preventDefault();
-          alert('Không đọc được download_urls.txt. Hãy đảm bảo file này nằm trong thư mục gốc, cùng cấp với index.html.');
-        });
-      }
-    })();
-  </script>
 </body>
 </html>
