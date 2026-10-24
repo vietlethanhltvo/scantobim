@@ -98,15 +98,15 @@
   }
   // product-page video: title bar on its container
   document.querySelectorAll('main > div > video').forEach(function(v){
-    var p=v.parentElement;strip(p);p.classList.add('win');p.insertBefore(bar('Demo — '+document.title.split(' - ')[0]),p.firstChild);
+    var p=v.parentElement;strip(p);p.classList.add('win');p.insertBefore(bar('Video — '+document.title.split(' - ')[0]),p.firstChild);
   });
   // custom video overlay
   var n=0;
   document.querySelectorAll('video').forEach(function(v){
     n++;var w=document.createElement('div');w.className='vwrap';v.parentNode.insertBefore(w,v);w.appendChild(v);
     v.removeAttribute('controls');v.preload='metadata';
-    var t=document.createElement('span');t.className='vtag';t.textContent='DEMO '+(v.closest('#demo-videos')?String(n).padStart(2,'0'):'');w.appendChild(t);
-    var b=document.createElement('button');b.className='vplay';b.setAttribute('aria-label','Phát video demo');b.innerHTML='<i class="fa-solid fa-play"></i>';w.appendChild(b);
+    var t=document.createElement('span');t.className='vtag';t.textContent='VIDEO '+(v.closest('#demo-videos')?String(n).padStart(2,'0'):'');w.appendChild(t);
+    var b=document.createElement('button');b.className='vplay';b.setAttribute('aria-label','Phát video');b.innerHTML='<i class="fa-solid fa-play"></i>';w.appendChild(b);
     b.addEventListener('click',function(){v.controls=true;v.play();});
     v.addEventListener('play',function(){b.classList.add('hide');t.style.opacity=0;});
     v.addEventListener('ended',function(){v.controls=false;b.classList.remove('hide');t.style.opacity=1;});
