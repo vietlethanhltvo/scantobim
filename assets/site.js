@@ -84,10 +84,34 @@
       cap.innerHTML='<span class="n">0'+(i+1)+' / 0'+slides.length+'</span><span>'+s.alt+'</span>';});};
     var mo=new MutationObserver(upd);slides.forEach(function(s){mo.observe(s,{attributes:true,attributeFilter:['class']});});upd();
     if(slides[0])slides[0].setAttribute('fetchpriority','high');
-    var lb=document.createElement('div');lb.id='lb';lb.innerHTML='<button aria-label="Đóng">&times;</button><img alt="">';document.body.appendChild(lb);
+    var lb=document.createElement('div');lb.id='lb';
+    lb.innerHTML='<button class="lb-close" aria-label="Đóng">&times;</button>'+
+      '<button class="lb-prev" aria-label="Ảnh trước"><i class="fa-solid fa-chevron-left"></i></button>'+
+      '<button class="lb-next" aria-label="Ảnh sau"><i class="fa-solid fa-chevron-right"></i></button>'+
+      '<img alt="">';
+    document.body.appendChild(lb);
+    var lbImg=lb.querySelector('img');
+    var lbIndex=0;
     var close=function(){lb.classList.remove('open');};
-    hc.addEventListener('click',function(){slides.forEach(function(s){if(s.classList.contains('opacity-100')){lb.querySelector('img').src=s.src;lb.querySelector('img').alt=s.alt;lb.classList.add('open');}});});
-    lb.addEventListener('click',close);addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    var openLb=function(index){
+      lbIndex=(index+slides.length)%slides.length;
+      var s=slides[lbIndex];
+      lbImg.src=s.src;lbImg.alt=s.alt;
+      lb.classList.add('open');
+    };
+    hc.addEventListener('click',function(){
+      slides.forEach(function(s,i){if(s.classList.contains('opacity-100'))openLb(i);});
+    });
+    lb.querySelector('.lb-close').addEventListener('click',function(e){e.stopPropagation();close();});
+    lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();openLb(lbIndex-1);});
+    lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();openLb(lbIndex+1);});
+    lb.addEventListener('click',function(e){if(e.target===lb)close();});
+    addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      else if(e.key==='ArrowLeft')openLb(lbIndex-1);
+      else if(e.key==='ArrowRight')openLb(lbIndex+1);
+    });
   }
   // comparison slider -> window
   var cs=document.getElementById('comparison-slider');

@@ -85,10 +85,10 @@
         <div class="relative w-full max-w-xl mx-auto lg:max-w-none lg:mt-[4.75rem]">
           <div class="relative overflow-hidden rounded-2xl border border-slate-200 shadow-xl bg-slate-100 aspect-[16/10]">
             <div id="hero-carousel" class="relative w-full h-full">
-              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" src="image/home1.png" alt="Toàn cảnh dock / ribbon tool" data-index="0">
-              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="image/home2.png" alt="Scan → tạo Pipe/Duct" data-index="1">
-              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="image/home3.png" alt="Scan → tạo Beam/Column" data-index="2">
-              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="image/home4.png" alt="Kết quả mô hình so với Point Cloud" data-index="3">
+              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100" src="image/home1.png" alt="Toàn cảnh dock" data-index="0">
+              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="image/home2.png" alt="Scan → tạo Conduit/Duct(Round)/Pipe" data-index="1">
+              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="image/home3.png" alt="Kiểm tra Clash/Duplicate" data-index="2">
+              <img class="hero-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0" src="image/home4.png" alt="Tạo View Check" data-index="3">
             </div>
             <!-- Prev / Next -->
             <button type="button" id="hero-prev" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-md flex items-center justify-center text-slate-700 transition z-10" aria-label="Ảnh trước">
@@ -368,10 +368,13 @@
         <div class="px-5 py-4 flex items-center gap-3"><span class="chip mep">MEP</span><p class="font-medium text-slate-800 text-[15px] leading-snug">Auto Route - Tạo tuyến ống</p></div>
       </div>
       <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-        <video class="w-full aspect-video bg-slate-900 demo-video" controls preload="none" poster="video/thumb2.jpg">
-          <source src="video/video 2.mp4" type="video/mp4">
-        </video>
-        <div class="px-5 py-4 flex items-center gap-3"><span class="chip mep">MEP</span><p class="font-medium text-slate-800 text-[15px] leading-snug">Kết nối Fitting &amp; Auto Route</p></div>
+        <a class="yt-embed relative block w-full aspect-video bg-slate-900 group" data-yt="5k7jW4dXI44" href="https://youtu.be/5k7jW4dXI44" target="_blank" rel="noopener noreferrer" aria-label="Xem video Auto Route + Seed trên YouTube">
+          <img class="w-full h-full object-cover" src="https://img.youtube.com/vi/5k7jW4dXI44/hqdefault.jpg" alt="Auto Route + Seed - tự sinh tuyến ống dài nhất có thể" loading="lazy">
+          <span class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/20 transition">
+            <span class="flex items-center justify-center w-16 h-16 rounded-full bg-white/95 text-blue-600 shadow-lg"><i class="fa-solid fa-play text-2xl ml-1"></i></span>
+          </span>
+        </a>
+        <div class="px-5 py-4 flex items-center gap-3"><span class="chip mep">MEP</span><p class="font-medium text-slate-800 text-[15px] leading-snug">Auto Route + Seed - tự sinh tuyến ống dài nhất có thể</p></div>
       </div>
       <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
         <video class="w-full aspect-video bg-slate-900 demo-video" controls preload="none" poster="video/thumb3.jpg">
